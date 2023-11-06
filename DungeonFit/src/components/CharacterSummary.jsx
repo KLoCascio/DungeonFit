@@ -9,7 +9,7 @@ import axios from 'axios'
 export default function CharacterSummary() {
 
     return (
-        <div>
+        <div className="Character-Summary">
             <img src="#" alt="Hero Portrait" />
             <h1> USERNAME HERE </h1>
             <p>Class: CLASS HERE</p>
