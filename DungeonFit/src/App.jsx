@@ -25,12 +25,17 @@ function App() {
     <>
       {/* Icon and App Name */}
         <Header />
+        <Navbar />
       {/* Avatar Profile Picture and Info */}
         <CharacterSummary />
 
-        <Workouts />
-
       <div className="Content">
+        <Achievements />
+        <Character />
+        <Login />
+        <Party />
+        <SignUp />
+        <Workouts />
         <NewsFeed />
         {/* MVP: Show User Achievements Completed
         Stretch: Show friends Achieveents Completed */}
