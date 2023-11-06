@@ -1,10 +1,10 @@
 # DungeonFit
 
 ## Wire Frame
-![Wire Frame](MernProject/src/assets/DungeonFitWF.png)
+![Wire Frame](DungeonFit/src/assets/DungeonFitWF.png)
 
 ## Component Hierarchy Diagram
-![Component Hierarchy Diagram](MernProject/src/assets/CHDDFit.png)
+![Component Hierarchy Diagram](DungeonFit/src/assets/CHDDFit.png)
 
 ## Links
 - Trello: https://trello.com/b/R4ppz8w4/fitness-app-mern-group-project
