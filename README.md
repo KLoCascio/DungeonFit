@@ -12,6 +12,7 @@
 
 
 ## Description
+- Level up IRL!
 - A goals driven Fitness Tracker App that encourages fitness with a gaming influence,
 - Class System: Build your character.
 - Achievement System that rewards users on commitment and drive.
@@ -39,7 +40,7 @@
 01. App Defined
 02. User Defined
 03. Community Defined
-gi
+
 ## Socials
 01. Kyndal LoCascio
 - https://www.linkedin.com/in/kyndallocascio/
