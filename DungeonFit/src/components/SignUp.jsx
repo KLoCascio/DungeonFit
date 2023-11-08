@@ -1,7 +1,7 @@
 // SIGN UP
 
 import { useEffect, useState } from "react"
-// import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -14,7 +14,7 @@ const SignUp = () => {
         valid: 'Passwords must match'
     }
 
-    // const history = useHistory()
+    const navigate = useNavigate()
 
     const [formState, setFormState] = useState(signUp)
 
@@ -25,7 +25,7 @@ const SignUp = () => {
 
         if (formState.password === formState.passwordConfirm) {
             setFormState({...formState, ['valid']: 'Success!'})
-            // history.push("/")
+            navigate("/")
         } else {
             setFormState({...formState, ['valid']: 'Passwords need to match.'})
         }

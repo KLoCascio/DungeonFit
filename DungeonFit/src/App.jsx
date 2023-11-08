@@ -8,7 +8,6 @@ import NewsFeed from './feeds/NewsFeed'
 
 //COMPONENTS
 import Activities from './components/Activities'
-import CharacterSummary from './components/CharacterSummary'
 import Achievements from './components/Achievements'
 import Character from './components/Character'
 import Footer from './components/Footer'
@@ -26,20 +25,12 @@ function App() {
   return (
     <>
       {/* Icon and App Name */}
-        {/* <Header /> */}
-        {/* <Navbar /> */}
-      {/* Avatar Profile Picture and Info */}
-        {/* <CharacterSummary /> */}
+        <Header />
+        <Navbar />
 
       <div className="Content">
         <Home />
         <Main />
-        <Achievements />
-        <Character />
-        <Login />
-        <Party />
-        <SignUp />
-        {/* <Activities /> */}
         <NewsFeed />
 
         {/* MVP: Show User Achievements Completed
