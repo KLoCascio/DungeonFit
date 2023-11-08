@@ -5,12 +5,40 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* div {
+  border: 1px solid white;
+} */
+
+.modal {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
 }
+
+#activity-modal {
+  background-color: #31123e;
+  border: 2px black solid;
+  border-radius: 10px;
+  display: grid;
+}
+
+.activity-btn {
+  background-color: #31123e;
+  color: white;
+}
+
+.activity-btn:hover,
+.activity-btn:active {
+  background-color: #652F7B;
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #fd952daa);
 }
@@ -18,18 +46,30 @@
   filter: drop-shadow(0 0 2em #fd952daa);
 }
 
-
-
-div {
-  border: 1px solid white;
+.activity-tab {
+  background-color: #652F7B;
+  padding: 10px;
 }
 
 
-
-.card {
-  padding: 2em;
+.activity-tab select {
+  background-color: #250D2F;
+  padding: 5px 100px 5px 5px;
+  border-radius: 10px;
+  
 }
 
-.read-the-docs {
-  color: #888;
+.difficulty-btn-container {
+  display: grid;
+  grid-template-rows:repeat(1, 1fr);
+}
+
+.difficulty-btn {
+  background-color: #FE9F29;
+  color: black;
+  border-radius: 10px;
+}
+
+.add-activity-btn {
+  background-color: #652F7B;
 }

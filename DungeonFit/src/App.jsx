@@ -7,28 +7,30 @@ import GoalsFeed from './feeds/GoalsFeed'
 import NewsFeed from './feeds/NewsFeed'
 
 //COMPONENTS
-import Home from './components/Home'
+
 import CharacterSummary from './components/CharacterSummary'
 import Achievements from './components/Achievements'
+import Activities from './components/Activities'
 import Character from './components/Character'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import Home from './components/Home'
 import Login from './components/Login'
 import Main from './components/Main'
 import Navbar from './components/Nav'
 import Party from './components/Party'
 import SignUp from './components/SignUp'
-import Workouts from './components/Workouts'
+import Activities from './components/Activities'
 
 function App() {
 
   return (
     <>
       {/* Icon and App Name */}
-        <Header />
-        <Navbar />
+        {/* <Header /> */}
+        {/* <Navbar /> */}
       {/* Avatar Profile Picture and Info */}
-        <CharacterSummary />
+        {/* <CharacterSummary /> */}
 
       <div className="Content">
         <Home />
@@ -40,19 +42,20 @@ function App() {
         <SignUp />
         <Workouts />
         <NewsFeed />
+
         {/* MVP: Show User Achievements Completed
         Stretch: Show friends Achieveents Completed */}
 
-        <AchievementFeed />
+        {/* <AchievementFeed /> */}
 
         {/* MVP: Show User Quests
         SUPER Stretch: Close to complete Achievement */}
 
-        <GoalsFeed />
+        {/* <GoalsFeed /> */}
 
       </div>
       {/* Footer Will be at the bottom for App Format, Navbar for Browser Setup */}
-      <Footer />
+      {/* <Footer /> */}
 
     </>
   )
