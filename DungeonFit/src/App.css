@@ -39,10 +39,18 @@
   background-color: #652F7B;
 }
 
+.logo:hover {
+  filter: drop-shadow(0 0 2em #fd952daa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #fd952daa);
+}
+
 .activity-tab {
   background-color: #652F7B;
   padding: 10px;
 }
+
 
 .activity-tab select {
   background-color: #250D2F;

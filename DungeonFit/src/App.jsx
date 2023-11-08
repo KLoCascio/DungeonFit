@@ -7,16 +7,19 @@ import GoalsFeed from './feeds/GoalsFeed'
 import NewsFeed from './feeds/NewsFeed'
 
 //COMPONENTS
-// import CharacterSummary from './components/CharacterSummary'
-// import Achievements from './components/Achievements'
-// import Character from './components/Character'
-// import Footer from './components/Footer'
-// import Header from './components/Header'
-// import Login from './components/Login'
-// // import Main from './components/Main'
-// import Navbar from './components/Nav'
-// import Party from './components/Party'
-// import SignUp from './components/SignUp'
+
+import CharacterSummary from './components/CharacterSummary'
+import Achievements from './components/Achievements'
+import Activities from './components/Activities'
+import Character from './components/Character'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Home from './components/Home'
+import Login from './components/Login'
+import Main from './components/Main'
+import Navbar from './components/Nav'
+import Party from './components/Party'
+import SignUp from './components/SignUp'
 import Activities from './components/Activities'
 
 function App() {
@@ -30,13 +33,16 @@ function App() {
         {/* <CharacterSummary /> */}
 
       <div className="Content">
-        {/* <Achievements /> */}
-        {/* <Character /> */}
-        {/* <Login /> */}
-        {/* <Party /> */}
-        {/* <SignUp /> */}
-        <Activities />
-        {/* <NewsFeed /> */}
+        <Home />
+        <Main />
+        <Achievements />
+        <Character />
+        <Login />
+        <Party />
+        <SignUp />
+        <Workouts />
+        <NewsFeed />
+
         {/* MVP: Show User Achievements Completed
         Stretch: Show friends Achieveents Completed */}
 
