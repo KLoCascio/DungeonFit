@@ -18,18 +18,18 @@ import Login from './components/Login'
 import Main from './components/Main'
 import Navbar from './components/Nav'
 import Party from './components/Party'
-import SignUp from './components/SignUp'
+// import SignUp from './components/SignUp'
 
 
 function App() {
 
   return (
     <>
-      {/* Icon and App Name */}
-        {/* <Header /> */}
-        {/* <Navbar /> */}
+      Icon and App Name
+        <Header />
+        <Navbar />
       {/* Avatar Profile Picture and Info */}
-        {/* <CharacterSummary /> */}
+        <CharacterSummary />
 
       <div className="Content">
         <Home />
@@ -38,23 +38,23 @@ function App() {
         <Character />
         <Login />
         <Party />
-        <SignUp />
-        {/* <Activities /> */}
+        {/* <SignUp /> */}
+        <Activities />
         <NewsFeed />
 
         {/* MVP: Show User Achievements Completed
         Stretch: Show friends Achieveents Completed */}
 
-        {/* <AchievementFeed /> */}
+        <AchievementFeed />
 
         {/* MVP: Show User Quests
         SUPER Stretch: Close to complete Achievement */}
 
-        {/* <GoalsFeed /> */}
+        <GoalsFeed />
 
       </div>
       {/* Footer Will be at the bottom for App Format, Navbar for Browser Setup */}
-      {/* <Footer /> */}
+      <Footer />
 
     </>
   )
