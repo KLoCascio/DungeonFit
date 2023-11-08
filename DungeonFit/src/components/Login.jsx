@@ -32,20 +32,20 @@ const Login = () => {
             <h1> Sign In</h1>
             <form onSubmit={handleSubmit} className="login-form">
 
-            <label htmlFor="userLogin">Username: </label>
+            <label htmlFor="username">Username: </label>
             <input 
             type="text" 
-            id="login"
+            id="username"
             className="signup-userName" 
             placeholder="Enter username..." 
             value={formState.username} 
             onChange={handleChange}
             />
 
-            <label htmlFor="loginPassword">Password: </label>
+            <label htmlFor="password">Password: </label>
             <input 
             type="password" 
-            id="loginPassword"
+            id="password"
             className="signup-password1" 
             placeholder="Enter password..." 
             onChange={handleChange} 
