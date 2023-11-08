@@ -7,13 +7,14 @@ import GoalsFeed from './feeds/GoalsFeed'
 import NewsFeed from './feeds/NewsFeed'
 
 //COMPONENTS
+import Home from './components/Home'
 import CharacterSummary from './components/CharacterSummary'
 import Achievements from './components/Achievements'
 import Character from './components/Character'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Login from './components/Login'
-// import Main from './components/Main'
+import Main from './components/Main'
 import Navbar from './components/Nav'
 import Party from './components/Party'
 import SignUp from './components/SignUp'
@@ -30,6 +31,8 @@ function App() {
         <CharacterSummary />
 
       <div className="Content">
+        <Home />
+        <Main />
         <Achievements />
         <Character />
         <Login />
