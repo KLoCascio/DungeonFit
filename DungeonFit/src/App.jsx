@@ -7,10 +7,9 @@ import GoalsFeed from './feeds/GoalsFeed'
 import NewsFeed from './feeds/NewsFeed'
 
 //COMPONENTS
-
+import Activities from './components/Activities'
 import CharacterSummary from './components/CharacterSummary'
 import Achievements from './components/Achievements'
-import Activities from './components/Activities'
 import Character from './components/Character'
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -20,7 +19,7 @@ import Main from './components/Main'
 import Navbar from './components/Nav'
 import Party from './components/Party'
 import SignUp from './components/SignUp'
-import Activities from './components/Activities'
+
 
 function App() {
 
@@ -40,7 +39,7 @@ function App() {
         <Login />
         <Party />
         <SignUp />
-        <Workouts />
+        <Activities />
         <NewsFeed />
 
         {/* MVP: Show User Achievements Completed
