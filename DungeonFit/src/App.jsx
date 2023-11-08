@@ -39,7 +39,7 @@ function App() {
         <Login />
         <Party />
         <SignUp />
-        <Activities />
+        {/* <Activities /> */}
         <NewsFeed />
 
         {/* MVP: Show User Achievements Completed
