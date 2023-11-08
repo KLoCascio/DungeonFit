@@ -6,7 +6,7 @@ import { GiBrutalHelm, GiCompass } from 'react-icons/gi'
 import { CiDumbbell } from 'react-icons/ci'
 import { GrTrophy } from 'react-icons/gr'
 import { FaPeopleGroup } from "react-icons/fa6"
-import Logo from "../assets/logo/Logo/logo.svg"
+import Logo from "../assets/logo/logo.svg"
 
 import axios from 'axios'
 
