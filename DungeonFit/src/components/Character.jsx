@@ -13,7 +13,7 @@ export default function Character() {
     return (
         <div className="Character">
             <img src="#" alt="Hero Portrait" />
-            <h1> -USERNAME HERE- -CLASS HERE- -LEVEL HERE-</h1>
+            <h2> -USERNAME HERE- -CLASS HERE- -LEVEL HERE-</h2>
             <ul>Defensive</ul>
             <li>HP: HPVALUE</li>
             <li>MP: MPVALUE</li>
