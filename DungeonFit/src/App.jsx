@@ -7,7 +7,6 @@ import GoalsFeed from './feeds/GoalsFeed'
 import NewsFeed from './feeds/NewsFeed'
 
 //COMPONENTS
-
 import Activities from './components/Activities'
 import CharacterSummary from './components/CharacterSummary'
 import Achievements from './components/Achievements'
