@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import Navbar from './Nav'
+
 
 import axios from 'axios'
 
@@ -8,8 +10,7 @@ import axios from 'axios'
 export default function Header() {
     return (
         <div className="Header">
-            <img src="#" alt="Logo Icon" />
-            <img src="#" alt="DUNGEONFIT" />
+            <Navbar />
         </div>
     )
 

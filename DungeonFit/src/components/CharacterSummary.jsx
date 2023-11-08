@@ -11,7 +11,7 @@ export default function CharacterSummary() {
     return (
         <div className="Character-Summary">
             <img src="#" alt="Hero Portrait" />
-            <h1> USERNAME HERE </h1>
+            <h2> USERNAME HERE </h2>
             <p>Class: CLASS HERE</p>
             <p>Level: LEVEL HERE</p>
             <p>XP: XP/100 </p>

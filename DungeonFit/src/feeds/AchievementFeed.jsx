@@ -9,7 +9,7 @@ import axios from 'axios'
 export default function AchievementFeed() {
     return (
         <div className="AchievementFeed">
-            <h1>Achievements:</h1>
+            <h2>Achievements:</h2>
             <p>ACHIEVEMENT LINKED HERE.</p>
         </div>
     )
