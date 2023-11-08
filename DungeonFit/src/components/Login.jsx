@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useParams, Link } from 'react-router-dom'
-import loginLogo from '../assets/logo/Logo/signInLogo.svg'
+import loginLogo from '../assets/logo/signInLogo.svg'
 
 import axios from 'axios'
 
