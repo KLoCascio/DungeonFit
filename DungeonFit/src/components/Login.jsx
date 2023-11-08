@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useParams, Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 import loginLogo from '../assets/logo/signInLogo.svg'
 
 import axios from 'axios'
@@ -13,12 +14,14 @@ const Login = () => {
         // valid: 'Password must match'
     }
 
+    const navigate = useNavigate()
+
     const [formState, setFormState] = useState(login)
 
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(formState)
-        // setFormState(login)
+        navigate("/")
     }
 
     const handleChange = e => {
