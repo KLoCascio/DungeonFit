@@ -1,11 +1,9 @@
 // PROFILE
 
-import React, { useState } from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
 
-import Inventory from './Inventory'
-import Quests from './Quests'
-import Abilities from './Abilities'
+import axios from 'axios'
 
 // MVP: component shows user's most recently completed achievements on the home page.
 // Stretch: component shows user's friends/group's recently completed achievements on the home page.
@@ -13,12 +11,27 @@ import Abilities from './Abilities'
 // route should be /character
 
 export default function Character() {
-    const [activeTab, setActiveTab] = useState('')
+    const [isInventoryVisible, setIsInventoryVisible] = useState(true)
+    const [isQuestsVisible, setIsQuestsVisible] = useState(false)
+    const [isAbilitiesVisible, setIsAbilitiesVisible] = useState(false)
 
-    const handleTabClick = (tab) => {
-        setActiveTab(tab)
+    const toggleInventory = () => {
+        setIsInventoryVisible(true)
+        setIsQuestsVisible(false)
+        setIsAbilitiesVisible(false)
     }
 
+    const toggleQuests = () => {
+        setIsInventoryVisible(false)
+        setIsQuestsVisible(true)
+        setIsAbilitiesVisible(false)
+    }
+
+    const toggleAbilities = () => {
+        setIsInventoryVisible(false)
+        setIsQuestsVisible(false)
+        setIsAbilitiesVisible(true)
+    }
 
 
 
@@ -40,21 +53,35 @@ export default function Character() {
             <li>INT: INTVALUE</li>
             <li>CHA: CHAVALUE</li>
 
-            
-            <button className={`inventory-button ${activeTab === 'inventory' ? 'active' : ''}`} onClick={() => handleTabClick('inventory')}>
-                <Link to="/character/inventory">INVENTORY</Link>
-            </button>
-            <button className={`quests-button ${activeTab === 'quests' ? 'active' : ''}`} onClick={() => handleTabClick('quests')}>
-                <Link to="/character/quests">QUESTS</Link>
-            </button>
-            <button className={`abilities-button ${activeTab === 'abilities' ? 'active' : ''}`} onClick={() => handleTabClick('abilities')}>
-                <Link to="/character/abilities">ABILITIES</Link>
-            </button>
 
-            {/* Route to conditionally render the selected component */}
-            <div>
-                
-            </div>
+            {/* buttons for modals? bottom section of character panel that will show inventory, quests or abilities -- depending on the button clicked. */}
+            <button onClick={toggleInventory} className="inventory-button">INVENTORY</button>
+            <button onClick={toggleQuests} className="quests-button">QUESTS</button>
+            <button onClick={toggleAbilities} className="abilities-button">ABILITIES</button>
+            {/* conditional rendering */}
+
+            {isInventoryVisible && (
+                <div className="inventory-tab">
+                    {/* INVENTORY DATA/COMPONENT HERE */}
+                    INVENTORY DATA HERE
+                </div>
+            )}
+
+            {isQuestsVisible && (
+                <div className="quests-tab">
+                    {/* QUEST DATA/COMPONENT HERE */}
+                    QUEST DATA HERE
+                </div>
+            )}
+
+            {isAbilitiesVisible && (
+                <div className="abilities-tab">
+                    {/* ABILITY DATA/COMPONENT HERE */}
+                    ABILITY DATA HERE
+                </div>
+            )}
+
+
         </div>
     )
 }
