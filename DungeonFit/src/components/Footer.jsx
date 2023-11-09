@@ -9,7 +9,7 @@ import NavMobile from './NavMobile'
 export default function Footer() {
     return (
         <div className="Footer">
-           {/* <NavMobile /> */}
+           <NavMobile />
         </div>
     )
 
