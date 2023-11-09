@@ -54,9 +54,26 @@ export default function Character() {
             <button onClick={toggleAbilities} className="abilities-button">ABILITIES</button>
             {/* conditional rendering */}
 
-            {isInventoryVisible && (<div className="inventory-tab">INVENTORY DATA HERE</div>)}
-            {isQuestsVisible && (<div className="quests-tab">QUEST DATA HERE</div>)}
-            {isAbilitiesVisible && (<div className="abilities-tab">ABILITY DATA HERE</div>)}
+            {isInventoryVisible && (
+                <div className="inventory-tab">
+                    {/* INVENTORY DATA/COMPONENT HERE */}
+                    INVENTORY DATA HERE
+                </div>
+            )}
+
+            {isQuestsVisible && (
+                <div className="quests-tab">
+                    {/* QUEST DATA/COMPONENT HERE */}
+                    QUEST DATA HERE
+                </div>
+            )}
+
+            {isAbilitiesVisible && (
+                <div className="abilities-tab">
+                    {/* ABILITY DATA/COMPONENT HERE */}
+                    ABILITY DATA HERE
+                </div>
+            )}
 
         </div>
     )
