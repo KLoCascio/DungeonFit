@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import NavMobile from './NavMobile'
 
 export default function Activities() {
     const [isModalVisible, setIsModalVisible] = useState(false)
@@ -28,11 +29,10 @@ export default function Activities() {
 
             {isModalVisible && (
                 <div id="activity-modal" className="activity-modal">
-                    <h2>Add an Activity</h2>
-
                     <div className="activity-content">
+                    <h2>Add an Activity</h2>
                         <button onClick={toggleActivity} className="activity-btn">ACTIVITY</button>
-                        <button onClick={toggleCustom} className="activity-btn">CUSTOM</button>
+                        <button onClick={toggleCustom} className="custom-btn">CUSTOM</button>
 
                         {/* ACTIVITY TAB */}
                         {isActivitySelected && (
@@ -73,9 +73,11 @@ export default function Activities() {
                         <button className="difficulty-btn">Level 2</button>
                         <button className="difficulty-btn">Level 3</button>
                     </div>
-
-                    <button className="add-activity-btn">ADD</button>
+                    <div className="add-activity-btn-container">
+                        <button className="add-activity-btn">ADD</button>
+                    </div>
                 </div>)}
+            <NavMobile />
         </div>
     )
 }
