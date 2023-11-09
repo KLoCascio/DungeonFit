@@ -27,22 +27,22 @@
   width: 100%; 
   height: 100%; 
   overflow: auto;
-  border: 2px black solid;
-  border-radius: 10px;
   background-color: rgba(0,0,0,0.8);
 }
 
 .activity-content {
   background-color: #31123e;
+  border: 2px black solid;
+  border-radius: 10px;
 }
 
 .activity-btn,
 .custom-btn {
   background-color: #31123e;
   color: white;
+  border: 2px solid black;
 }
 
-.activity-btn:hover,
 .activity-btn:active {
   background-color: #652F7B;
 }
@@ -57,7 +57,9 @@
 }
 
 .activity-tab select,
-.custom-tab select {
+.custom-tab select,
+.activity-tab input,
+.custom-tab input {
   background-color: #250D2F;
   padding: 5px 100px 5px 5px;
   border-radius: 10px;
@@ -84,3 +86,4 @@
 .add-activity-btn {
   background-color: #652F7B;
 }
+
