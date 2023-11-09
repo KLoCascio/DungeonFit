@@ -14,7 +14,7 @@ export default function Activities() {
             <div className="Completed-Activities">
                 {/* grid 2x4, first card = "Create New Work Out", and then the last 7 work outs */}
             </div>
-            <div id="activity-modal" className="modal">
+            <div id="activity-modal" className="activity-modal">
                 <h2>Add an Activity</h2>
                 <div className="activity-content">
                     <button className="activity-btn">ACTIVITY</button> <button className="activity-btn">CUSTOM</button>
