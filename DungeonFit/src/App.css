@@ -73,3 +73,15 @@
 .add-activity-btn {
   background-color: #652F7B;
 }
+
+.Inventory-Tab {
+  display: show;
+}
+
+.Quests-Tab {
+  display: hidden;
+}
+
+.Abilities-Tab {
+  display: hidden;
+}

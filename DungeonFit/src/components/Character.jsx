@@ -1,14 +1,24 @@
 // PROFILE
 
-import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, Route, Routes } from 'react-router-dom'
 
-import axios from 'axios'
+import Inventory from './Inventory'
+import Quests from './Quests'
+import Abilities from './Abilities'
 
 // MVP: component shows user's most recently completed achievements on the home page.
 // Stretch: component shows user's friends/group's recently completed achievements on the home page.
 
+// route should be /character
+
 export default function Character() {
+    const [activeTab, setActiveTab] = useState('')
+
+    const handleTabClick = (tab) => {
+        setActiveTab(tab)
+    }
+
 
     return (
         <div className="Character">
@@ -26,10 +36,31 @@ export default function Character() {
             <li>CHA: CHAVALUE</li>
 
             {/* buttons for modals? bottom section of character panel that will show inventory, quests or abilities -- depending on the button clicked. */}
-            <button className="inventory-button"><Link to="/inventory">INVENTORY</Link></button>
-            <button className="quests-button"><Link to="/quests">QUESTS</Link></button>
-            <button className="abilities-button"><Link to="/abilities">ABILITIES</Link></button>
+            <button className={`inventory-button ${activeTab === 'inventory' ? 'active' : ''}`} onClick={() => handleTabClick('inventory')}>
+                <Link to="/character/inventory">INVENTORY</Link>
+            </button>
+            <button className={`quests-button ${activeTab === 'quests' ? 'active' : ''}`} onClick={() => handleTabClick('quests')}>
+                <Link to="/character/quests">QUESTS</Link>
+            </button>
+            <button className={`abilities-button ${activeTab === 'abilities' ? 'active' : ''}`} onClick={() => handleTabClick('abilities')}>
+                <Link to="/character/abilities">ABILITIES</Link>
+            </button>
 
+            {/* Use Switch and Route to conditionally render the selected component */}
+            <div>
+                <Inventory className="Inventory-Tab"/>
+                <Quests className="Quests-Tab"/>
+                <Abilities className="Abilities-Tab"/>
+                <Routes>
+                    {/* <Route path="/character/inventory" element={<Inventory inventory={props.inventory} />} /> */}
+                    {/* <Route path="/character/quests">
+                        <Quests />
+                    </Route>
+                    <Route path="/character/abilities">
+                        <Abilities />
+                    </Route> */}
+                </Routes>
+            </div>
         </div>
     )
 }
