@@ -8,15 +8,13 @@ import { FaPeopleGroup } from "react-icons/fa6"
 const NavMobile = () => {
   return (
     <div>
-      <div className="logo">
-        <button className="nav-link"><Link to="/"><img src={Logo} alt="Logo"></img></Link></button>
-      </div>
+      
       <div>
-            <button className="nav-link"><Link to="/character"><GiBrutalHelm /></Link></button>
-            <button className="nav-link"><Link to="/activities"><CiDumbbell /></Link></button>
-            <button className="nav-link"><Link to="/achievements"><GrTrophy /></Link></button>
-            <button className="nav-link"><Link to="/checkin"> <GiCompass /></Link></button>
-            <button className="nav-link"><Link to="/party"> <FaPeopleGroup/></Link></button>
+            <button className="mobile-link"><Link to="/character"><GiBrutalHelm /></Link></button>
+            <button className="mobile-link"><Link to="/activities"><CiDumbbell /></Link></button>
+            <button className="mobile-link"><Link to="/achievements"><GrTrophy /></Link></button>
+            <button className="mobile-link"><Link to="/checkin"> <GiCompass /></Link></button>
+            <button className="mobile-link"><Link to="/party"> <FaPeopleGroup/></Link></button>
         </div>
     </div>
   )

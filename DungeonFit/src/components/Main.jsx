@@ -8,6 +8,7 @@ import SignUp from "./SignUp"
 import Party from "./Party"
 import Activites from './Activities'
 import Checkin from './Checkin'
+import Invite from './Invite'
 
 const Main = (props) => {
     
@@ -22,6 +23,7 @@ const Main = (props) => {
                 <Route path="/party" element={<Party party={props.party}/>} />
                 <Route path="/activities" element={<Activites activities={props.activities}/>} />
                 <Route path="/checkin" element={<Checkin checkin={props.checkin}/>} />
+                <Route path="/invite" element={<Invite invite={props.invite}/>} />
             </Routes>
         </div>
 
