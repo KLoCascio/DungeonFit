@@ -20,6 +20,11 @@ export default function Character() {
     }
 
 
+
+
+
+
+
     return (
         <div className="Character">
             <img src="#" alt="Hero Portrait" />
@@ -35,7 +40,7 @@ export default function Character() {
             <li>INT: INTVALUE</li>
             <li>CHA: CHAVALUE</li>
 
-            {/* buttons for modals? bottom section of character panel that will show inventory, quests or abilities -- depending on the button clicked. */}
+            
             <button className={`inventory-button ${activeTab === 'inventory' ? 'active' : ''}`} onClick={() => handleTabClick('inventory')}>
                 <Link to="/character/inventory">INVENTORY</Link>
             </button>
@@ -46,20 +51,9 @@ export default function Character() {
                 <Link to="/character/abilities">ABILITIES</Link>
             </button>
 
-            {/* Use Switch and Route to conditionally render the selected component */}
+            {/* Route to conditionally render the selected component */}
             <div>
-                <Inventory className="Inventory-Tab"/>
-                <Quests className="Quests-Tab"/>
-                <Abilities className="Abilities-Tab"/>
-                <Routes>
-                    {/* <Route path="/character/inventory" element={<Inventory inventory={props.inventory} />} /> */}
-                    {/* <Route path="/character/quests">
-                        <Quests />
-                    </Route>
-                    <Route path="/character/abilities">
-                        <Abilities />
-                    </Route> */}
-                </Routes>
+                
             </div>
         </div>
     )
