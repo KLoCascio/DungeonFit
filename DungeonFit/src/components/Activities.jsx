@@ -31,7 +31,7 @@ export default function Activities() {
                     </div>
 
                     {/* CUSTOM TAB */}
-                    {/* <div className="custom-tab">
+                    <div className="custom-tab">
                         <h3>Name of Activity:</h3>
                         <label htmlFor="custom-input">Activity Name</label>
                         <input type="text" id="custom-input" className="custom-input" />
@@ -45,7 +45,7 @@ export default function Activities() {
                         <select name="duration-select" id="duration-select">
                             <option value="select">Select Duration</option>
                         </select>
-                    </div> */}
+                    </div>
                 </div>
                 <h3>Difficulty Level:</h3>
                 <div className="difficulty-btn-container">
