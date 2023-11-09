@@ -33,6 +33,11 @@ export default function Character() {
         setIsAbilitiesVisible(true)
     }
 
+
+
+
+
+
     return (
         <div className="Character">
             <img src="#" alt="Hero Portrait" />
@@ -47,6 +52,7 @@ export default function Character() {
             <li>AGI: AGIVALUE</li>
             <li>INT: INTVALUE</li>
             <li>CHA: CHAVALUE</li>
+
 
             {/* buttons for modals? bottom section of character panel that will show inventory, quests or abilities -- depending on the button clicked. */}
             <button onClick={toggleInventory} className="inventory-button">INVENTORY</button>
@@ -74,6 +80,7 @@ export default function Character() {
                     ABILITY DATA HERE
                 </div>
             )}
+
 
         </div>
     )

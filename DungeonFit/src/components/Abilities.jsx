@@ -15,7 +15,10 @@ export default function Abilities() {
         setActiveTab(tab)
     }
     return (
-    <p>This is the Abilities Component being rendered.</p>      
+        <>
+        <h1>hello</h1>
+    <p>This is the Abilities Component being rendered.</p>    
+    </>
     )
 
 }
