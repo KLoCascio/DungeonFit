@@ -17,7 +17,14 @@
 }
 
 /* Activities.jsx */
-.modal {
+#activity-modal {
+  background-color: #31123e;
+  border: 2px black solid;
+  border-radius: 10px;
+
+}
+
+#activity-modal.visible {
   display: grid;
   place-items: center;
   position: fixed;
@@ -28,13 +35,6 @@
   height: 100%; 
   overflow: auto;
   background-color: rgba(0,0,0,0.8);
-}
-
-#activity-modal {
-  background-color: #31123e;
-  border: 2px black solid;
-  border-radius: 10px;
-  display: grid;
 }
 
 .activity-btn {
@@ -56,7 +56,6 @@
   background-color: #250D2F;
   padding: 5px 100px 5px 5px;
   border-radius: 10px;
-  
 }
 
 .difficulty-btn-container {
