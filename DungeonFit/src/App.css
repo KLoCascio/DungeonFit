@@ -16,14 +16,7 @@
 }
 
 /* Activities.jsx */
-#activity-modal {
-  background-color: #31123e;
-  border: 2px black solid;
-  border-radius: 10px;
-
-}
-
-#activity-modal.visible {
+.activity-modal {
   display: grid;
   place-items: center;
   position: fixed;
@@ -36,22 +29,36 @@
   background-color: rgba(0,0,0,0.8);
 }
 
-.activity-btn {
+.activity-content {
   background-color: #31123e;
-  color: white;
+  border: 2px black solid;
+  border-radius: 10px;
 }
 
-.activity-btn:hover,
+.activity-btn,
+.custom-btn {
+  background-color: #31123e;
+  color: white;
+  border: 2px solid black;
+}
+
 .activity-btn:active {
   background-color: #652F7B;
 }
 
-.activity-tab {
+.activity-tab,
+.custom-tab {
   background-color: #652F7B;
   padding: 10px;
+  text-align: left;
+  border-radius: 10px;
+  margin: 0px 10px 10px 10px;
 }
 
-.activity-tab select {
+.activity-tab select,
+.custom-tab select,
+.activity-tab input,
+.custom-tab input {
   background-color: #250D2F;
   padding: 5px 100px 5px 5px;
   border-radius: 10px;
@@ -59,7 +66,9 @@
 
 .difficulty-btn-container {
   display: grid;
-  grid-template-rows:repeat(1, 1fr);
+  grid-template-columns:repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px;
 }
 
 .difficulty-btn {
@@ -68,9 +77,15 @@
   border-radius: 10px;
 }
 
+.add-activity-btn-container {
+  text-align: right;
+  margin: 10px;
+}
+
 .add-activity-btn {
   background-color: #652F7B;
 }
+
 
 .footerDiv {
   display: none;
@@ -101,3 +116,4 @@
     display: block;
   }
 }
+
