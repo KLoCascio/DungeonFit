@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 
+// data: activities, activityIcon, activityTitle, idActivity, activityType
+
 // I couldn't get the activity-btn and custom-btn to change to #652f7b when active.
 
 export default function Activities() {
   // activity grid
   let { cats } = useParams()
   const [category, setActivity] = useState([])
-  
+
   // activity modal
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isActivitySelected, setIsActivitySelected] = useState(true)
@@ -56,6 +58,32 @@ export default function Activities() {
     }
   }, [isModalVisible])
 
+  // New Custom Activity
+  const [newActivity, setNewActivity] = useState({
+    activityTitle: '',
+    activityType: '',
+  })
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.targetsetNewActivity((prevActivity) => ({
+      ...prevActivity,
+      [id]: value,
+    }))
+  }
+
+  const handleAddActivity = () => {
+    if (newActivity.activityTitle & newActivity.activityType) {
+      console.log("Activity:", newActivity)
+      setNewActivity({
+        activityTitle: '',
+        activityType: '',
+      })
+      setIsModalVisible(false)
+    } else {
+      console.log('Please Make All Selections')
+    }
+  }
+
   return (
     <div className="Activities">
       <div className="Completed-Activities">
@@ -101,10 +129,19 @@ export default function Activities() {
             {isCustomSelected && (
               <div className="custom-tab">
                 <h3>Name of Activity:</h3>
-                <input type="text" id="custom-input" className="custom-input" />
+                <input 
+                  type="text" 
+                  id="activityTitle" 
+                  className="custom-input"
+                  value={newActivity.activityTitle}
+                  onChange={handleInputChange} />
 
                 <h3>Type of Activity:</h3>
-                <select name="activity-type-select" id="activity-type-select">
+                <select 
+                  name="activity-type-select"
+                  id="activity-type-select"
+                  value={newActivity.activityType}
+                  onChange={handleInputChange}>
                   <option value="select">Select Type</option>
                 </select>
 
@@ -130,3 +167,4 @@ export default function Activities() {
     </div>
   )
 }
+
