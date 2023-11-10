@@ -16,7 +16,9 @@ function App() {
         <Main />
       </div>
       {/* Footer Will be at the bottom for App Format, Navbar for Browser Setup */}
-      <Footer />
+      <div className='footerDiv'>
+        <Footer />
+      </div>
     </>
   )
 }

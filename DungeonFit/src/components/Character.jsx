@@ -1,5 +1,7 @@
 // PROFILE
-
+import Inventory from './Inventory'
+import Abilities from './Abilities'
+import Quests from './Quests'
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
@@ -62,22 +64,19 @@ export default function Character() {
 
             {isInventoryVisible && (
                 <div className="inventory-tab">
-                    {/* INVENTORY DATA/COMPONENT HERE */}
-                    INVENTORY DATA HERE
+                    <Inventory />
                 </div>
             )}
 
             {isQuestsVisible && (
                 <div className="quests-tab">
-                    {/* QUEST DATA/COMPONENT HERE */}
-                    QUEST DATA HERE
+                    <Quests />
                 </div>
             )}
 
             {isAbilitiesVisible && (
                 <div className="abilities-tab">
-                    {/* ABILITY DATA/COMPONENT HERE */}
-                    ABILITY DATA HERE
+                    <Abilities />
                 </div>
             )}
 

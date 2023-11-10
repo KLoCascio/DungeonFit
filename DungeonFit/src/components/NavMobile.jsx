@@ -7,9 +7,9 @@ import { FaPeopleGroup } from "react-icons/fa6"
 
 const NavMobile = () => {
   return (
-    <div>
+    <div className='mobileNavDiv'>
       
-      <div>
+      <div >
             <button className="mobile-link"><Link to="/character"><GiBrutalHelm /></Link></button>
             <button className="mobile-link"><Link to="/activities"><CiDumbbell /></Link></button>
             <button className="mobile-link"><Link to="/achievements"><GrTrophy /></Link></button>
