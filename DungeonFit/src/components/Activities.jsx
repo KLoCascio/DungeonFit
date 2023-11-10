@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 
 // data: activities, activityIcon, activityTitle, idActivity, activityType
+// activiities.activityTitle, activities.activityIcon
 
 // I couldn't get the activity-btn and custom-btn to change to #652f7b when active.
 
