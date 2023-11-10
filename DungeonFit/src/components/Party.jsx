@@ -8,24 +8,7 @@ import { DateRangePicker } from "react-date-range"
 // import UserList from './UserList'
 
 export default function Party() {
-    // const [users, setUsers] = useState([])
-    // const [error, setError] = useState(null)
-
-    // useEffect(() => {
-    //     const getUserData = async () => {
-    //         try {
-    //             const response = await get('')
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok')
-    //             }
-    //             const data = await response.json()
-    //             setUsers(data)
-    //         } catch (e) {
-    //             setError(e.message)
-    //         }
-    //     }
-    //     getUserData()
-    // }, [])
+   const [userData, setUserData] = useState([])
 
     const selectionRange = {
         startDate: new Date(),
@@ -33,10 +16,13 @@ export default function Party() {
         key: 'selection',
     }
 
-    // const handleChange = e => {
-    //     const { id, value } = e.target
-    //     setFormState({...formState, [id]: value})
-    // }
+//    useEffect(() => {
+//     async function getData() {
+//         try {
+//             const response = await axios.get('/api/getUserData')
+//         }
+//     }
+//    })
 
 
     const handleSelect = (ranges) => {
