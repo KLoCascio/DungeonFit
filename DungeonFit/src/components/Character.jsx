@@ -17,8 +17,8 @@ export default function Character() {
     const [isInventoryVisible, setIsInventoryVisible] = useState(true)
     const [isQuestsVisible, setIsQuestsVisible] = useState(false)
     const [isAbilitiesVisible, setIsAbilitiesVisible] = useState(false)
-    const [items, setItems] = useState([])
-    console.log(items[0].userName)
+    const [character, setCharacter] = useState([])
+    console.log(character)
 
     const toggleInventory = () => {
         setIsInventoryVisible(true)
@@ -39,14 +39,12 @@ export default function Character() {
     }
 
     useEffect(() => {
-        // Fetch data when the component mounts
-        axios.get('http://localhost:3001/user')
-          .then(response => {
-            setItems(response.data);
-          })
-          .catch(error => {
-            console.error('Error fetching data:', error);
-          });
+        const getCharacter = async () => {
+            const response = await axios.get('http://localhost:3001/user')
+            setCharacter(response.data)
+
+        }   
+        getCharacter()
       }, []);
 
       
@@ -55,11 +53,11 @@ export default function Character() {
     return (
         <div className="Character">
             <img src="#" alt="Hero Portrait" />
-            <h2>{items[0].userName}-{items[0].class}-{items[0].level}</h2>
+            <h2>{character[0].userName}-{character[0].class}-{character[0].level}</h2>
             <ul>Defensive</ul>
-            <li>HP: {items[0].health}</li>
-            <li>MP: {items[0].mana}</li>
-            <li>XP: {items[0].exp}/100</li>
+            <li>HP: {character[0].health}</li>
+            <li>MP: {character[0].mana}</li>
+            <li>XP: {character[0].exp}/100</li>
 
             <ul>Offensive</ul>
             <li>STR: STRVALUE</li>
