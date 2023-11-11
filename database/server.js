@@ -46,6 +46,7 @@ app.delete('/achievements/:id', achievementsController.deleteAchievement)
 app.put('/achievements/:id', achievementsController.updateAchievement)
 
 app.get('/activities', activitiesController.getActivity)
+app.get('/activities/:id', activitiesController.getActivityById)
 app.post('/activities', activitiesController.createActivity)
 app.delete('/activities/:id', activitiesController.deleteActivity)
 app.put('/activities/:id', activitiesController.updateActivity)
