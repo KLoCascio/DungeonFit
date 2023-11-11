@@ -123,10 +123,6 @@ export default function Activities() {
                 <select name="activities" id="activity-select">
                   <option value="select">Select Activity</option>
                 </select>
-                <h3>Duration:</h3>
-                <select name="duration" id="duration-select">
-                  <option value="select">Select Duration</option>
-                </select>
               </div>
             )}
 
@@ -140,6 +136,9 @@ export default function Activities() {
                   value={newActivity.activityTitle}
                   onChange={handleInputChange} />
 
+                {/* Upper Body, Lower Body, Full Body, Cardio, Rest, Other */}
+                {/* UpperBodyIcon.svg, LowerBodyIcon.svg, FullBodyIcon.svg, CardioIcon.svg, RestIcon.svg, OtherIcon.svg */}
+                {/* Corresponding Icons to Upper Body, Lower Body, Full Body Cardio, Rest, Other */}
                 <h3>Type of Activity:</h3>
                 <select
                   name="activity-type-select"
@@ -149,10 +148,6 @@ export default function Activities() {
                   <option value="select">Select Type</option>
                 </select>
 
-                <h3>Duration:</h3>
-                <select name="duration-select" id="duration-select">
-                  <option value="select">Select Duration</option>
-                </select>
               </div>
             )}
 
