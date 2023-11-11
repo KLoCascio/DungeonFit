@@ -42,17 +42,17 @@ export default function Activities() {
     const getActivity = async () => {
       try {
         const response = await axios.get('http://localhost:3001/activities')
+        const recentActivities = response.data.slice(0, 5)
         response.data.forEach(activity => {
           console.log(activity)
         })
-        setActivity(response.data)
+        setActivity(recentActivities)
       } catch (error) {
         console.error('Error fetching activities:', error)
       }
     }
     getActivity()
   }, [])
-
 
   // activity modal
   useEffect(() => {
@@ -83,6 +83,7 @@ export default function Activities() {
       })
       setIsModalVisible(false)
     } else {
+      alert('Please Make All Selections')
       console.log('Please Make All Selections')
     }
   }
@@ -90,15 +91,17 @@ export default function Activities() {
   return (
     <div className="Activities">
       <div className="Completed-Activities">
-        <button onClick={toggleModal} className="add-activity-btn">
-          ADD ACTIVITY
-        </button>
         <div className="activities-grid">
+        <button onClick={toggleModal} className="add-activity-btn">
+          <img src="./src/assets/icons/PlusIcon.png" alt="Plus Symbol" />
+          <h3>ADD ACTIVITY</h3>
+        </button>
           {activities && activities.map((activity) => (
-            <Link to={`/activities/${activity._id}`} key={activity._id}>
+            <Link to={`/activities/${activity._id}`} key={activity._id} className="activity-card">
               <div className="details">
-                <img className="activity-icon" src={activity.activityIcon} alt="Activity Icon"></img>
-                <p className="activity-title">{activity.activityTitle}</p>
+                <img className="activity-icon" src={activity.activityIcon} alt="Activity Icon" />
+                <h2 className="activity-title">{activity.activityTitle}</h2>
+                <h3 className="activity-day">{activity.activityDay}</h3>
               </div>
             </Link>
           ))}
@@ -134,11 +137,13 @@ export default function Activities() {
                   id="activityTitle"
                   className="custom-input"
                   value={newActivity.activityTitle}
-                  onChange={handleInputChange} />
+                  onChange={handleInputChange}
+                  maxLength="10" />
 
                 {/* Upper Body, Lower Body, Full Body, Cardio, Rest, Other */}
                 {/* UpperBodyIcon.svg, LowerBodyIcon.svg, FullBodyIcon.svg, CardioIcon.svg, RestIcon.svg, OtherIcon.svg */}
                 {/* Corresponding Icons to Upper Body, Lower Body, Full Body Cardio, Rest, Other */}
+
                 <h3>Type of Activity:</h3>
                 <select
                   name="activity-type-select"
@@ -159,7 +164,7 @@ export default function Activities() {
             </div>
             <div className="add-activity-btn-container">
               <button onClick={handleAddActivity}
-              className="add-activity-btn">ADD</button>
+                className="add-activity-btn">ADD</button>
             </div>
           </div>
         </div>

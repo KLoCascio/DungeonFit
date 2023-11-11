@@ -53,6 +53,8 @@ export default function Character() {
             <li>INT: {user.attINT}</li>
             <li>CHA: {user.attCHA}</li> */}
 
+            <p className="nav-link"><Link to="/achievements"> Achievements</Link></p>
+
             <button onClick={toggleInventory} className="inventory-button">INVENTORY</button>
             <button onClick={toggleQuests} className="quests-button">QUESTS</button>
             <button onClick={toggleAbilities} className="abilities-button">ABILITIES</button>

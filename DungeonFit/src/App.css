@@ -2,6 +2,7 @@
   max-width: 1280px;
   margin: 0px 0px;
   text-align: center;
+  background-color: #31123E;
 }
 
 /* div {
@@ -77,15 +78,45 @@
   border-radius: 10px;
 }
 
-.add-activity-btn-container {
-  text-align: right;
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 
+    "card1 card2"
+    "card3 card4"
+    "card5 card6"
+    "card7 card8";
+}
+
+.details {
+  border-radius: 8px;
   margin: 10px;
+  padding: 15px;
+  text-align: center;
+  background-color: #250d2f;
+  color: white;
+
+}
+
+.activity-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.add-activity-btn {
+  grid-area: card1; 
+  justify-self: end; 
+  align-self: start;
+  width: 90%;
+  height: 90%;
+  margin: 10px auto;
+  padding: 10px;
 }
 
 .add-activity-btn {
   background-color: #652F7B;
 }
-
 
 .footerDiv {
   display: none;
@@ -104,9 +135,10 @@
 }
 
 .mobileNavDiv {
-  width: 100vw;
+  width: 100%;
   position: fixed;
   bottom: 0px;
+  background-color:#31123E;
 }
 
 
