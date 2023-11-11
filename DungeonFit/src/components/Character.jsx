@@ -48,7 +48,7 @@ export default function Character() {
       }, []);
 
       
-      console.log('hello World')
+      console.log('hello my World')
 
     return (
         <div className="Character">
