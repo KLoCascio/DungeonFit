@@ -17,6 +17,9 @@ export default function Activities() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isActivitySelected, setIsActivitySelected] = useState(true)
   const [isCustomSelected, setIsCustomSelected] = useState(false)
+  const [isLevelOneSelected, setIsLevelOneSelected] = useState(true)
+  const [isLevelTwoSelected, setIsLevelTwoSelected] = useState(false)
+  const [isLevelThreeSelected, setIsLevelThreeSelected] = useState(false)
 
 
   // activity modal
@@ -30,6 +33,21 @@ export default function Activities() {
   const toggleCustom = () => {
     setIsCustomSelected(true)
     setIsActivitySelected(false)
+  }
+  const toggleLevelOne = () => {
+    setIsLevelOneSelected(true)
+    setIsLevelTwoSelected(false)
+    setIsLevelThreeSelected(false)
+  }
+  const toggleLevelTwo = () => {
+    setIsLevelTwoSelected(true)
+    setIsLevelOneSelected(false)
+    setIsLevelThreeSelected(false)
+  }
+  const toggleLevelThree = () => {
+    setIsLevelThreeSelected(true)
+    setIsLevelOneSelected(false)
+    setIsLevelTwoSelected(false)
   }
   const closeOnOutsideClick = (e) => {
     if (isModalVisible && !e.target.closest('.activity-content')) {
@@ -69,13 +87,13 @@ export default function Activities() {
   })
   const handleInputChange = (e) => {
     const { id, value } = e.target
-    setNewActivity((prevActivity) => ({
-      ...prevActivity,
+    setNewActivity((Activity) => ({
+      Activity,
       [id]: value,
     }))
   }
   const handleAddActivity = () => {
-    if (newActivity.activityTitle & newActivity.activityType) {
+    if (newActivity.activityTitle && newActivity.activityType) {
       console.log("Activity:", newActivity)
       setNewActivity({
         activityTitle: '',
@@ -146,6 +164,10 @@ export default function Activities() {
                   value={newActivity.activityType}
                   onChange={handleInputChange}>
                   <option value="select">Select Type</option>
+                  <option value="upper-body">Upper Body</option>
+                  <option value="lower-body">Lower Body</option>
+                  <option value="whole-body">Whole Body</option>
+                  <option value="cardio">Cardio</option>
                 </select>
 
               </div>
@@ -153,9 +175,9 @@ export default function Activities() {
 
             <h3>Difficulty Level:</h3>
             <div className="difficulty-btn-container">
-              <button className="difficulty-btn">Level 1</button>
-              <button className="difficulty-btn">Level 2</button>
-              <button className="difficulty-btn">Level 3</button>
+              <button onClick={toggleLevelOne} className="difficulty-btn">Level 1</button>
+              <button onClick={toggleLevelTwo} className="difficulty-btn">Level 2</button>
+              <button onClick={toggleLevelThree} className="difficulty-btn">Level 3</button>
             </div>
             <div className="add-activity-btn-container">
               <button onClick={handleAddActivity}
