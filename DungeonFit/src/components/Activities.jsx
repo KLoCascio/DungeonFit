@@ -185,7 +185,7 @@ export default function Activities() {
               <button onClick={toggleLevelThree} className="difficulty-btn">Level 3</button>
             </div>
             <div className="add-activity-btn-container">
-              <button onClick={handleAddActivity}
+              <button type='submit' onClick={handleAddActivity}
                 className="add-activity-btn">ADD</button>
             </div>
           </div>
