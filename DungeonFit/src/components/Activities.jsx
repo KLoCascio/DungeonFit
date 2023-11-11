@@ -21,17 +21,14 @@ export default function Activities() {
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible)
   }
-
   const toggleActivity = () => {
     setIsActivitySelected(true)
     setIsCustomSelected(false)
   }
-
   const toggleCustom = () => {
     setIsCustomSelected(true)
     setIsActivitySelected(false)
   }
-
   const closeOnOutsideClick = (e) => {
     if (isModalVisible && !e.target.closest('.activity-content')) {
       setIsModalVisible(false)
@@ -64,14 +61,12 @@ export default function Activities() {
     activityTitle: '',
     activityType: '',
   })
-
   const handleInputChange = (e) => {
     const { id, value } = e.targetsetNewActivity((prevActivity) => ({
       ...prevActivity,
       [id]: value,
     }))
   }
-
   const handleAddActivity = () => {
     if (newActivity.activityTitle & newActivity.activityType) {
       console.log("Activity:", newActivity)
@@ -103,6 +98,7 @@ export default function Activities() {
         </div>
       </div>
 
+            {/* MODAL SECTION */}
       {isModalVisible && (
         <div id="activity-modal" className="activity-modal">
           <div className="activity-content">
@@ -130,15 +126,15 @@ export default function Activities() {
             {isCustomSelected && (
               <div className="custom-tab">
                 <h3>Name of Activity:</h3>
-                <input 
-                  type="text" 
-                  id="activityTitle" 
+                <input
+                  type="text"
+                  id="activityTitle"
                   className="custom-input"
                   value={newActivity.activityTitle}
                   onChange={handleInputChange} />
 
                 <h3>Type of Activity:</h3>
-                <select 
+                <select
                   name="activity-type-select"
                   id="activity-type-select"
                   value={newActivity.activityType}
