@@ -1,0 +1,62 @@
+const { Activities } = require('../models')
+
+async function getActivity(req, res) {
+    try {
+        const activities = await Activities.find()
+        res.status(200).send(activities)
+    } catch (e) {
+        return res.status(500).json({ error: e.message })
+    }
+}
+
+async function getActivityById(req, res) {
+    try {
+        const activity = await Activities.findById(req.params.id)
+        res.status(200).send(activity)
+    } catch (e) {
+        return res.status(500).json({ error: e.message })
+    }
+}
+
+async function createActivity(req, res) {
+    try {
+        const newActivity = await new Activities(req.body)
+        await newActivity.save()
+        return res.status(201).json({ newActivity })
+    } catch (e) {
+        return res.status(500).json({ error: e.message })
+    }
+}
+
+async function updateActivity(req, res) {
+    try {
+        const id = req.params.id
+        const updatedActivity = await Activities.findByIdAndUpdate(id, req.body, { new: true })
+        if (updatedActivity) {
+            return res.status(200).json(updatedActivity)
+        }
+    } catch (e) {
+        return res.status(500).json({ error: e.message })
+    }
+}
+
+async function deleteActivity(req, res) {
+    try {
+        const id = req.params.id
+        const deletedActivity = await Activities.findByIdAndDelete(id, req.body, { new: true })
+        if (deletedActivity) {
+            return res.status(200).send('Activity Deleted')
+        }
+        throw new Error("Activity not found")
+    } catch (e) {
+        return res.status(500).json({ error: e.message })
+    }
+}
+
+module.exports = {
+    getActivity,
+    getActivityById,
+    createActivity,
+    updateActivity,
+    deleteActivity
+}

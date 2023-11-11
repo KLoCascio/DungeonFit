@@ -11,32 +11,32 @@ const main = async () => {
          userName: "Asger1415",
          password: 'werwer',
          confirmPassword: true,
-         class: 'Ranger',
-         level: 50,
+         userClass: 'Ranger',
+         userLevel: 50,
          achievements: []
       },
       {
          userName: "GluteGoblin",
          password: 'erwer',
          confirmPassword: true,
-         class: 'Druid',
-         level: 55,
+         userClass: 'Druid',
+         userLevel: 55,
          achievements: []
       },
       {
          userName: "FitKing",
          password: 'werwer',
          confirmPassword: true,
-         class: 'Bard',
-         level: 68,
+         userClass: 'Bard',
+         userLevel: 68,
          achievements: []
       },
       {
          userName: "SneakySquatter",
          password: 'erwr',
          confirmPassword: true,
-         class: 'Rogue',
-         level: 1,
+         userClass: 'Rogue',
+         userLevel: 1,
          achievements: []
       }
    ]

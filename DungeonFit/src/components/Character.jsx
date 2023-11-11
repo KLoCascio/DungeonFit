@@ -13,6 +13,7 @@ import axios from 'axios'
 // route should be /character
 
 export default function Character() {
+    // useState for toggle between inventory/quests/abilities
     const [isInventoryVisible, setIsInventoryVisible] = useState(true)
     const [isQuestsVisible, setIsQuestsVisible] = useState(false)
     const [isAbilitiesVisible, setIsAbilitiesVisible] = useState(false)
@@ -37,30 +38,24 @@ export default function Character() {
 
 
 
-
-
-
     return (
         <div className="Character">
             <img src="#" alt="Hero Portrait" />
-            <h2> -USERNAME HERE- -CLASS HERE- -LEVEL HERE-</h2>
+            {/* <h2> {user.userName} {user.userClass} {user.userLevel} </h2> */}
             <ul>Defensive</ul>
-            <li>HP: HPVALUE</li>
-            <li>MP: MPVALUE</li>
-            <li>XP: ##/100</li>
+            {/* <li>HP: {user.attHP}</li>
+            <li>MP: {user.attMP}</li>
+            <li>XP: {user.attXP}/100</li> */}
 
             <ul>Offensive</ul>
-            <li>STR: STRVALUE</li>
-            <li>AGI: AGIVALUE</li>
-            <li>INT: INTVALUE</li>
-            <li>CHA: CHAVALUE</li>
+            {/* <li>STR: {user.attSTR}</li>
+            <li>AGI: {user.attAGI}</li>
+            <li>INT: {user.attINT}</li>
+            <li>CHA: {user.attCHA}</li> */}
 
-
-            {/* buttons for modals? bottom section of character panel that will show inventory, quests or abilities -- depending on the button clicked. */}
             <button onClick={toggleInventory} className="inventory-button">INVENTORY</button>
             <button onClick={toggleQuests} className="quests-button">QUESTS</button>
             <button onClick={toggleAbilities} className="abilities-button">ABILITIES</button>
-            {/* conditional rendering */}
 
             {isInventoryVisible && (
                 <div className="inventory-tab">
@@ -79,7 +74,6 @@ export default function Character() {
                     <Abilities />
                 </div>
             )}
-
 
         </div>
     )
