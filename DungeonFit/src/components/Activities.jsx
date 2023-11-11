@@ -10,12 +10,14 @@ import axios from 'axios'
 export default function Activities() {
   // activity grid
   let { cats } = useParams()
-  const [category, setActivity] = useState([])
+  const [activities, setActivity] = useState([])
+
 
   // activity modal
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isActivitySelected, setIsActivitySelected] = useState(true)
   const [isCustomSelected, setIsCustomSelected] = useState(false)
+
 
   // activity modal
   const toggleModal = () => {
@@ -39,14 +41,18 @@ export default function Activities() {
   useEffect(() => {
     const getActivity = async () => {
       try {
-        const response = await axios.get('http://localhost:5173/activities')
-        setActivity(response.data.activities)
+        const response = await axios.get('http://localhost:3001/activities')
+        response.data.forEach(activity => {
+          console.log(activity)
+        })
+        setActivity(response.data)
       } catch (error) {
         console.error('Error fetching activities:', error)
       }
     }
     getActivity()
   }, [])
+
 
   // activity modal
   useEffect(() => {
@@ -62,7 +68,8 @@ export default function Activities() {
     activityType: '',
   })
   const handleInputChange = (e) => {
-    const { id, value } = e.targetsetNewActivity((prevActivity) => ({
+    const { id, value } = e.target
+    setNewActivity((prevActivity) => ({
       ...prevActivity,
       [id]: value,
     }))
@@ -87,18 +94,18 @@ export default function Activities() {
           ADD ACTIVITY
         </button>
         <div className="activities-grid">
-          {category.map((activities) => (
-            <Link to={`/activities/${activities.idActivity}`} key={activities.idActivity}>
+          {activities && activities.map((activity) => (
+            <Link to={`/activities/${activity._id}`} key={activity._id}>
               <div className="details">
-                <img className="activity-icon" src={activities.activityIcon} alt="Activity Icon"></img>
-                <p className="activity-title">{activities.activityTitle}</p>
+                <img className="activity-icon" src={activity.activityIcon} alt="Activity Icon"></img>
+                <p className="activity-title">{activity.activityTitle}</p>
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-            {/* MODAL SECTION */}
+      {/* MODAL SECTION */}
       {isModalVisible && (
         <div id="activity-modal" className="activity-modal">
           <div className="activity-content">
@@ -116,10 +123,6 @@ export default function Activities() {
                 <select name="activities" id="activity-select">
                   <option value="select">Select Activity</option>
                 </select>
-                <h3>Duration:</h3>
-                <select name="duration" id="duration-select">
-                  <option value="select">Select Duration</option>
-                </select>
               </div>
             )}
 
@@ -133,6 +136,9 @@ export default function Activities() {
                   value={newActivity.activityTitle}
                   onChange={handleInputChange} />
 
+                {/* Upper Body, Lower Body, Full Body, Cardio, Rest, Other */}
+                {/* UpperBodyIcon.svg, LowerBodyIcon.svg, FullBodyIcon.svg, CardioIcon.svg, RestIcon.svg, OtherIcon.svg */}
+                {/* Corresponding Icons to Upper Body, Lower Body, Full Body Cardio, Rest, Other */}
                 <h3>Type of Activity:</h3>
                 <select
                   name="activity-type-select"
@@ -142,10 +148,6 @@ export default function Activities() {
                   <option value="select">Select Type</option>
                 </select>
 
-                <h3>Duration:</h3>
-                <select name="duration-select" id="duration-select">
-                  <option value="select">Select Duration</option>
-                </select>
               </div>
             )}
 
@@ -156,7 +158,8 @@ export default function Activities() {
               <button className="difficulty-btn">Level 3</button>
             </div>
             <div className="add-activity-btn-container">
-              <button className="add-activity-btn">ADD</button>
+              <button onClick={handleAddActivity}
+              className="add-activity-btn">ADD</button>
             </div>
           </div>
         </div>
