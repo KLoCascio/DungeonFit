@@ -93,6 +93,17 @@ export default function Activities() {
       console.log('Please Make All Selections')
     }
   }
+  // Delete Activity Function
+  const handleDeleteActivity = async (activityId) => {
+    try {
+      await axios.delete(`http://localhost:3001/activities/${activityId}`)
+      // Optionally, you can re-fetch the updated list of activities after deletion
+      const updatedActivities = activities.filter((activity) => activity._id !== activityId)
+      setActivity(updatedActivities)
+    } catch (error) {
+      console.error('Error deleting activity:', error)
+    }
+  }
 
   return (
     <div className="Activities">
@@ -104,13 +115,18 @@ export default function Activities() {
           </button>
           {activities &&
             activities.map((activity) => (
-              <Link to={`/activities/${activity._id}`} key={activity._id} className="activity-card">
-                <div className="details">
-                  <img className="activity-icon" src={activity.activityIcon} alt="Activity Icon" />
-                  <h2 className="activity-title">{activity.activityTitle}</h2>
-                  <h3 className="activity-day">{activity.activityDay}</h3>
-                </div>
-              </Link>
+              <div key={activity._id} className="activity-card">
+                <Link to={`/activities/${activity._id}`} key={activity._id} className="activity-card">
+                  <div className="details">
+                    <img className="activity-icon" src={activity.activityIcon} alt="Activity Icon" />
+                    <h2 className="activity-title">{activity.activityTitle}</h2>
+                    <h3 className="activity-day">{activity.activityDay}</h3>
+                  </div>
+                </Link>
+                <button onClick={() => handleDeleteActivity(activity._id)} className="delete-button">
+                  Delete
+                </button>
+              </div>
             ))}
         </div>
       </div>
