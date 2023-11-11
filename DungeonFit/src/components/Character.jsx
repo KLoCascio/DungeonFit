@@ -2,10 +2,11 @@
 import Inventory from './Inventory'
 import Abilities from './Abilities'
 import Quests from './Quests'
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
-import axios from 'axios'
+
 
 // MVP: component shows user's most recently completed achievements on the home page.
 // Stretch: component shows user's friends/group's recently completed achievements on the home page.
@@ -16,6 +17,8 @@ export default function Character() {
     const [isInventoryVisible, setIsInventoryVisible] = useState(true)
     const [isQuestsVisible, setIsQuestsVisible] = useState(false)
     const [isAbilitiesVisible, setIsAbilitiesVisible] = useState(false)
+    const [items, setItems] = useState([])
+    console.log(items[0].userName)
 
     const toggleInventory = () => {
         setIsInventoryVisible(true)
@@ -35,7 +38,16 @@ export default function Character() {
         setIsAbilitiesVisible(true)
     }
 
-
+    useEffect(() => {
+        // Fetch data when the component mounts
+        axios.get('http://localhost:3001/user')
+          .then(response => {
+            setItems(response.data);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      }, []);
 
 
 
@@ -43,11 +55,11 @@ export default function Character() {
     return (
         <div className="Character">
             <img src="#" alt="Hero Portrait" />
-            <h2> -USERNAME HERE- -CLASS HERE- -LEVEL HERE-</h2>
+            <h2>{items[0].userName}-{items[0].class}-{items[0].level}</h2>
             <ul>Defensive</ul>
-            <li>HP: HPVALUE</li>
-            <li>MP: MPVALUE</li>
-            <li>XP: ##/100</li>
+            <li>HP: {items[0].health}</li>
+            <li>MP: {items[0].mana}</li>
+            <li>XP: {items[0].exp}/100</li>
 
             <ul>Offensive</ul>
             <li>STR: STRVALUE</li>
