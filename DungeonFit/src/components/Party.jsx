@@ -52,6 +52,7 @@ export default function Party() {
             <form className="challenge">
                 <label 
                 htmlFor="challenge-name">Pick a Name for Challenge:</label>
+                <br />
                 <input 
                 type="text" 
                 id="challenge"
@@ -59,9 +60,11 @@ export default function Party() {
                 placeholder="Name of challenge..."
                 value={''}
                 />
+                <br />
 
                 <label 
                 htmlFor="challenge-description">Challenge Description</label>
+                <br />
                 <input 
                 type="text" 
                 id="description"

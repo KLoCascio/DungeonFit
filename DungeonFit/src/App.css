@@ -4,6 +4,7 @@
   text-align: center;
   background-color: #31123E;
   height: 100%;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -54,6 +55,22 @@ body {
   background-color: #652F7B;
 }
 
+.update-button {
+  border-radius: 10px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 10px 15px;
+  margin: 0 5px;
+}
+
+.delete-button {
+  border-radius: 10px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+}
+
 .activity-tab,
 .custom-tab {
   background-color: #652F7B;
@@ -97,13 +114,16 @@ body {
 }
 
 .add-members a {
-  color: #fff;
+  color: #FFF;
   text-decoration: none;
 }
 
-.challenge {
-  display: block;
-  
+.challenge-name {
+  line-height: 30px;
+  font-size: 16px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding-left: 1rem;
 }
 
 .difficulty-btn-container {
@@ -177,10 +197,44 @@ select {
   height: 90%;
   margin: 10px auto;
   padding: 10px;
+  background-color: #652F7B;
+  border-radius: 10px;
+  border: 5px solid #250d2feb;
+  box-shadow: 0 0 5px #fff;
 }
 
-.add-activity-btn {
-  background-color: #652F7B;
+/* ==== CHARACTER ==== */
+.achievements a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.inventory-button {
+  border-radius: 10px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 10px 15px;
+  margin: 0 5px;
+}
+
+.quests-button {
+  border-radius: 10px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 10px 15px;
+  margin: 0 5px;
+}
+
+.abilities-button {
+  border-radius: 10px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 10px 15px;
+  margin: 0 5px;
 }
 
 .footerDiv {
@@ -196,21 +250,46 @@ select {
     position: fixed;
     bottom: 0px;
     display: block;
+    margin-top: 10px;
   }
 
   .mobileNavDiv {
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
     width: 100%;
     position: fixed;
     bottom: 0px;
   }
 
   .mobile-link {
-    display: inline-block;
     background-color:#250D2F;
     color: #fff;
+    width: 100%;
+    border-left: 1px solid #eeeeee20;
+    border-radius: 4px;
+  }
+
+  .mobile-link a {
+    color: #fff;
     font-size: 16px;
+  }
+
+  .update-button {
+  border-radius: 7px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 3px 5px;
+  margin: 0 5px;
+  }
+
+  .delete-button {
+  border-radius: 7px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 3px 5px;
+  margin: 0 5px;
   }
 }
 
