@@ -4,7 +4,6 @@ const { Activities } = require('../models')
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
-
   const activitiesData = [
     {
       activityDay: "Sunday",

@@ -2,9 +2,10 @@ const { Schema } = require('mongoose')
 
 const achievementsSchema = new Schema(
     {
-        title: { type: String, required: true },
-        prerequisites: { type: String, reuired: true },
-        description: { type: String, required: true },
+        achieveIcon: { type: String, required: true },
+        achieveTitle: { type: String, required: true },
+        achieveDescription: { type: String, required: true },
+        achievePrereq: { type: String, reuired: false },
     },
     { timestamps: true }
 )
