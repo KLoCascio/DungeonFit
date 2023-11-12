@@ -73,6 +73,7 @@ export default function Activities() {
 
   const handleInputChange = (e) => {
     const { id, value } = e.target
+    console.log(`id: ${id}, value: ${value}`)
     setNewActivity((prevActivity) => ({
       ...prevActivity,
       [id]: value,
@@ -80,9 +81,10 @@ export default function Activities() {
   }
 
   const handleAddActivity = async () => {
-    if (newActivity.activityTitle && newActivity.activityIcon && newActivity.activityDay && newActivity.activityType) {
+    console.log('Add Button Clicked')
+    if (newActivity.activityTitle) {
       try {
-        const response = await axios.post('http://localhost:3001/activities', {
+        const response = await axios.post(`http://localhost:3001/activities`, {
           activityTitle: newActivity.activityTitle,
           activityIcon: newActivity.activityIcon,
           activityDay: newActivity.activityDay,
@@ -202,7 +204,7 @@ export default function Activities() {
                   maxLength="10"
                 />
 
-                <h3>Workout Icon:</h3>
+                <h3>Rest Day:</h3>
                 <select
                   name="type"
                   id="icon-select"
@@ -210,9 +212,8 @@ export default function Activities() {
                   onChange={handleInputChange}
                 >
                   <option value="select">Select Icon</option>
-                  <option value="cardioIcon">Cardio</option>
-                  <option value="liftIcon">Lift</option>
-                  <option value="restIcon">Rest</option>
+                  <option value="./src/assets/icons/RestIcon.png">Yes</option>
+                  <option value="./src/assets/icons/LiftIcon.png">No</option>
                 </select>
 
                 <h3>Day of Workout:</h3>
@@ -223,13 +224,13 @@ export default function Activities() {
                   onChange={handleInputChange}
                 >
                   <option value="select">Select Day</option>
-                  <option value="sunday">Sunday</option>
-                  <option value="monday">Monday</option>
-                  <option value="tuesday">Tuesday</option>
-                  <option value="wednesday">Wednesday</option>
-                  <option value="thursday">Thursday</option>
-                  <option value="friday">Friday</option>
-                  <option value="saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
                 </select>
 
                 <h3>Type of Workout:</h3>
@@ -239,30 +240,16 @@ export default function Activities() {
                   value={newActivity.activityType}
                   onChange={handleInputChange}
                 >
-                  <option value="select">Select Type</option>
-                  <option value="upperBody">Upper Body</option>
-                  <option value="lowerBody">Lower Body</option>
-                  <option value="fullBody">Full Body</option>
-                  <option value="cardio">Cardio</option>
-                  <option value="rest">Rest</option>
-                  <option value="other">Other</option>
+                  <option value="Select">Select Type</option>
+                  <option value="Upper Body">Upper Body</option>
+                  <option value="Lower Body">Lower Body</option>
+                  <option value="Full Body">Full Body</option>
+                  <option value="Cardio">Cardio</option>
+                  <option value="Rest">Rest</option>
+                  <option value="Other">Other</option>
                 </select>
 
-                {/* <h3>Type of Activity:</h3>
-                <select
-                  name="text"
-                  id="type-select"
-                  value={newActivity.activityType}
-                  onChange={handleInputChange}
-                >
-                  <option value="select">Select Type</option>
-                  <option value="upper-body">Upper Body</option>
-                  <option value="lower-body">Lower Body</option>
-                  <option value="whole-body">Whole Body</option>
-                  <option value="cardio">Cardio</option>
-                  <option value="rest">Rest</option>
-                  <option value="other">Other</option>
-                </select> */}
+
               </div>
             )}
 
