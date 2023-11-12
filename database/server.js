@@ -24,6 +24,10 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(express.urlencoded( { extended: true}))
 
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).json({ error: 'Internal Server Error' })
+  })
 
 app.get('/user', usersController.getAllUsers)
 app.post('/user', usersController.createUser)
@@ -45,9 +49,17 @@ app.post('/achievements', achievementsController.createAchievement)
 app.delete('/achievements/:id', achievementsController.deleteAchievement)
 app.put('/achievements/:id', achievementsController.updateAchievement)
 
+
 app.get('/activities', activitiesController.getActivity)
 app.get('/activities/:id', activitiesController.getActivityById)
-app.post('/activities', activitiesController.createActivity)
+app.post('/activities', async (req, res, next) => {
+    try {
+      const result = await activitiesController.createActivity(req.body)
+      res.status(201).json(result)
+    } catch (error) {
+      next(error) 
+    }
+  })
 app.delete('/activities/:id', activitiesController.deleteActivity)
 app.put('/activities/:id', activitiesController.updateActivity)
 

@@ -1,9 +1,8 @@
 // Activities.jsx
 
 import React, { useState, useEffect } from 'react'
-import { useParams, Link, Route, Routes } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
-import ActivityDetails from '../details/ActivityDetails'
 
 export default function Activities() {
   let { cats } = useParams()
@@ -11,9 +10,9 @@ export default function Activities() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isActivitySelected, setIsActivitySelected] = useState(true)
   const [isCustomSelected, setIsCustomSelected] = useState(false)
-  const [isLevelOneSelected, setIsLevelOneSelected] = useState(true)
-  const [isLevelTwoSelected, setIsLevelTwoSelected] = useState(false)
-  const [isLevelThreeSelected, setIsLevelThreeSelected] = useState(false)
+  // const [isLevelOneSelected, setIsLevelOneSelected] = useState(true)
+  // const [isLevelTwoSelected, setIsLevelTwoSelected] = useState(false)
+  // const [isLevelThreeSelected, setIsLevelThreeSelected] = useState(false)
 
   
 
@@ -76,23 +75,39 @@ export default function Activities() {
 
   const handleInputChange = (e) => {
     const { id, value } = e.target
-    setNewActivity((Activity) => ({
-      Activity,
+    console.log(`id: ${id}, value: ${value}`)
+    setNewActivity((prevActivity) => ({
+      ...prevActivity,
       [id]: value,
     }))
   }
 
-  const handleAddActivity = () => {
-    if (newActivity.activityTitle && newActivity.activityType) {
-      console.log('Activity:', newActivity)
-      setNewActivity({
-        activityTitle: '',
-        activityType: '',
-      })
-      setIsModalVisible(false)
+  const handleAddActivity = async () => {
+    console.log('Add Button Clicked')
+    if (newActivity.activityTitle) {
+      try {
+        const response = await axios.post(`http://localhost:3001/activities`, {
+          activityTitle: newActivity.activityTitle,
+          activityIcon: newActivity.activityIcon,
+          activityDay: newActivity.activityDay,
+          activityType: newActivity.activityType,
+        })
+
+        const createdActivity = response.data
+        console.log('Activity added:', createdActivity)
+
+        setActivity([...activities, createdActivity])
+        setNewActivity({
+          activityTitle: '',
+          activityIcon: '',
+          activityDay: '',
+          activityType: '',
+        })
+      } catch (error) {
+        console.error('Error adding activity:', error)
+      }
     } else {
       alert('Please Make All Selections')
-      console.log('Please Make All Selections')
     }
   }
 
@@ -104,6 +119,7 @@ export default function Activities() {
         const response = await axios.put(`http://localhost:3001/activities/${activityId}`, {
           activityTitle: newTitle,
         })
+
         // Update the activities in the state with the new title
         const updatedActivities = activities.map((activity) =>
           activity._id === activityId ? { ...activity, activityTitle: newTitle } : activity
@@ -119,6 +135,7 @@ export default function Activities() {
   const handleDeleteActivity = async (activityId) => {
     try {
       await axios.delete(`http://localhost:3001/activities/${activityId}`)
+
       // Optionally, you can re-fetch the updated list of activities after deletion
       const updatedActivities = activities.filter((activity) => activity._id !== activityId)
       setActivity(updatedActivities)
@@ -189,27 +206,56 @@ export default function Activities() {
                   maxLength="10"
                 />
 
-                {/* Upper Body, Lower Body, Full Body, Cardio, Rest, Other */}
-                {/* UpperBodyIcon.svg, LowerBodyIcon.svg, FullBodyIcon.svg, CardioIcon.svg, RestIcon.svg, OtherIcon.svg */}
-                {/* Corresponding Icons to Upper Body, Lower Body, Full Body Cardio, Rest, Other */}
-
-                <h3>Type of Activity:</h3>
+                <h3>Rest Day:</h3>
                 <select
-                  name="activity-type-select"
-                  id="activity-type-select"
+                  name="type"
+                  id="icon-select"
+                  value={newActivity.activityIcon}
+                  onChange={handleInputChange}
+                >
+                  <option value="select">Select Icon</option>
+                  <option value="./src/assets/icons/RestIcon.png">Yes</option>
+                  <option value="./src/assets/icons/LiftIcon.png">No</option>
+                </select>
+
+                <h3>Day of Workout:</h3>
+                <select
+                  name="type"
+                  id="day-select"
+                  value={newActivity.activityDay}
+                  onChange={handleInputChange}
+                >
+                  <option value="select">Select Day</option>
+                  <option value="Sunday">Sunday</option>
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                </select>
+
+                <h3>Type of Workout:</h3>
+                <select
+                  name="type"
+                  id="type-select"
                   value={newActivity.activityType}
                   onChange={handleInputChange}
                 >
-                  <option value="select">Select Type</option>
-                  <option value="upper-body">Upper Body</option>
-                  <option value="lower-body">Lower Body</option>
-                  <option value="whole-body">Whole Body</option>
-                  <option value="cardio">Cardio</option>
+                  <option value="Select">Select Type</option>
+                  <option value="Upper Body">Upper Body</option>
+                  <option value="Lower Body">Lower Body</option>
+                  <option value="Full Body">Full Body</option>
+                  <option value="Cardio">Cardio</option>
+                  <option value="Rest">Rest</option>
+                  <option value="Other">Other</option>
                 </select>
+
+
               </div>
             )}
 
-            <h3>Difficulty Level:</h3>
+            {/* <h3>Difficulty Level:</h3>
             <div className="difficulty-btn-container">
               <button onClick={toggleLevelOne} className="difficulty-btn">
                 Level 1
@@ -220,8 +266,9 @@ export default function Activities() {
               <button onClick={toggleLevelThree} className="difficulty-btn">
                 Level 3
               </button>
-            </div>
+            </div> */}
             <div className="add-activity-btn-container">
+
               <button type='submit' onClick={handleAddActivity}
                 className="add-activity-btn">ADD</button>
 
