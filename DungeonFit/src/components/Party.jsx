@@ -7,14 +7,26 @@ import { DateRangePicker } from "react-date-range"
 
 export default function Party() {
 
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/seed/user')
+                setUsers(response.data);
+            } catch (error) {
+                console.error('Error fetching members:', error);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
     const selectionRange = {
         startDate: new Date(),
         endDate: new Date(),
         key: 'selection',
     }
-
-  
-
 
     const handleSelect = (ranges) => {
         console.log(ranges)
@@ -25,9 +37,15 @@ export default function Party() {
             {/* map function to show everyone added to your group? */}
             <div className="members">
                 <h4>Members:</h4>
-              
+                <ul>
+                    {users.map((user) => (
+                        <li key={user.id}>{user.name}</li>
+                    ))}
+                </ul>
 
-                <button className="add-members"><Link to="/invite">Invite</Link></button>
+                <button className="add-members">
+                    <Link to="/invite">Invite</Link>
+                </button>
 
             </div>
             <h3>Setup Party Challenge</h3>
@@ -52,11 +70,11 @@ export default function Party() {
                 value={''} 
                 />
 
-                <label htmlFor="challenge-duration">Select a Duration:</label>
+                {/* <label htmlFor="challenge-duration">Select a Duration:</label>
                 <DateRangePicker
                     ranges={[selectionRange]}
                     onChange={handleSelect}
-                />
+                /> */}
             </form>
         </div>
     )

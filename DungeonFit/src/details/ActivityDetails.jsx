@@ -7,6 +7,8 @@ export default function ActivityDetails() {
     const [selection, setActivity] = useState(null)
     const { id } = useParams()
 
+    
+
     useEffect(() => {
         const getActivityDetails = async () => {
             try {

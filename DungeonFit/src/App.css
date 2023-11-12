@@ -3,6 +3,13 @@
   margin: 0px 0px;
   text-align: center;
   background-color: #31123E;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  height: 100%;
 }
 
 /* div {
@@ -65,6 +72,40 @@
   border-radius: 10px;
 }
 
+/* ==== NAVBAR ==== */
+.Navbar {
+  background-color: #12192C ;
+}
+
+.nav-logo {
+  background-color: #12192C;
+}
+
+.nav-link {
+  background-color: #12192C;
+}
+
+.nav-link a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* ==== PARTY PAGE ==== */
+.add-members {
+  background-color: #250D2F;
+}
+
+.add-members a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.challenge {
+  display: block;
+  
+}
+
 .difficulty-btn-container {
   display: grid;
   grid-template-columns:repeat(3, 1fr);
@@ -113,6 +154,21 @@ select {
   height: 30px;
 }
 
+.invite-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.invite-message {
+  text-align: center;
+  align-items: center;
+  width: 50%;
+  justify-content: center;
+
+}
+
 .add-activity-btn {
   grid-area: card1; 
   justify-self: end; 
@@ -141,14 +197,24 @@ select {
     bottom: 0px;
     display: block;
   }
+
+  .mobileNavDiv {
+    /* display: flex;
+    justify-content: center; */
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+  }
+
+  .mobile-link {
+    display: inline-block;
+    background-color:#250D2F;
+    color: #fff;
+    font-size: 16px;
+  }
 }
 
-.mobileNavDiv {
-  width: 100%;
-  position: fixed;
-  bottom: 0px;
-  background-color:#31123E;
-}
+
 
 
 
