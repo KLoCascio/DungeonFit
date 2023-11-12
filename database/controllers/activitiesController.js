@@ -20,9 +20,9 @@ async function getActivityById(req, res) {
 
 async function createActivity(req, res) {
     try {
-        const newActivity = await new Activity(req.body);
-        const savedActivity = await newActivity.save();
-        return res.status(201).json(savedActivity);
+        const newActivity = await new Activities(req.body);
+        newActivity.save();
+        return res.status(201).json(newActivity);
     } catch (e) {
         console.error('Error creating activity:', e);
         console.error('Request Body:', req.body); 
