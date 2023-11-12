@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const achievementSchema = require('./achievement')
+const achievementsSchema = require('./achievement')
 const attributeSchema = require('./attribute')
 // const currentActivitySchema = require('./currentActivity')
 const failureSchema = require('./failure')
@@ -8,7 +8,7 @@ const userSchema = require('./user')
 // const activitiesSchema = require('./activities')
 const activitySchema = require('./activities')
 
-const Achievement = mongoose.model('achievement', achievementSchema)
+const Achievements = mongoose.model('achievements', achievementsSchema)
 const Attributes = mongoose.model('attributes', attributeSchema)
 // const CurrentActivity = mongoose.model('currentWorkout', currentActivitySchema)
 const Failures = mongoose.model('failures', failureSchema)
@@ -18,7 +18,7 @@ const Activities = mongoose.model('activities', activitySchema)
 
 module.exports = {
     User,
-    Achievement,
+    Achievements,
     Attributes,
     // CurrentActivity,
     Failures,
