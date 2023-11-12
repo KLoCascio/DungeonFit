@@ -215,8 +215,38 @@ select {
 }
 
 
+/* ActivityDetails.jsx */
+.activity-details {
+  display: flex;
+  flex-direction: column;
+  margin: 15%;
+  align-items: center;
+  background-color: #652F7B;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 100
+}
 
+.activity-icon {
+  margin-top: 10px;
+}
 
+.activity-details img {
+  width: 40px;
+
+}
+
+.details-button-container {
+  display: flex;
+  gap: 10px; 
+  margin-top: 10px; 
+  margin-bottom: 10px;
+}
+
+.return-link img {
+  width: 40px;
+
+}
 
 @media only screen and (min-width: 600px) {
   .Navbar {
