@@ -4,12 +4,12 @@ const userSchema = new Schema(
     {
         userName: { type: String, required: true },
         password: { type: String, required: true },
-        userClass: { type: String, required: true },
-        userLevel: { type: Number, required: true},
+        userClass: { type: String },
+        userLevel: { type: Number },
         achievements: [{ type: Schema.Types.ObjectId, ref: 'achievements'}],
-        health: { type: Number, required: true },
-        mana: { type: Number, required: true },
-        exp: { type: Number, required: true },
+        health: { type: Number },
+        mana: { type: Number },
+        exp: { type: Number },
         attributes: [{ type: Object }]
     },
     { timestamps: true }
