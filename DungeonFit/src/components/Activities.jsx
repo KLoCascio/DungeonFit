@@ -93,6 +93,26 @@ export default function Activities() {
       console.log('Please Make All Selections')
     }
   }
+
+  // Update Activity Function
+  const handleUpdateActivity = async (activityId) => {
+    const newTitle = prompt('Enter the new title for the activity:')
+    if (newTitle !== null) {
+      try {
+        const response = await axios.put(`http://localhost:3001/activities/${activityId}`, {
+          activityTitle: newTitle,
+        })
+        // Update the activities in the state with the new title
+        const updatedActivities = activities.map((activity) =>
+          activity._id === activityId ? { ...activity, activityTitle: newTitle } : activity
+        )
+        setActivity(updatedActivities)
+      } catch (error) {
+        console.error('Error updating activity:', error)
+      }
+    }
+  }
+
   // Delete Activity Function
   const handleDeleteActivity = async (activityId) => {
     try {
@@ -123,6 +143,9 @@ export default function Activities() {
                     <h3 className="activity-day">{activity.activityDay}</h3>
                   </div>
                 </Link>
+                <button onClick={() => handleUpdateActivity(activity._id)} className="update-button">
+                  Update
+                </button>
                 <button onClick={() => handleDeleteActivity(activity._id)} className="delete-button">
                   Delete
                 </button>
