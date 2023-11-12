@@ -9,9 +9,6 @@ const methodOverride = require('method-override')
 const PORT = process.env.PORT || 3001
 
 const activitiesController = require('./controllers/activitiesController')
-const achievementsController = require('./controllers/achievementsController')
-const attributesController = require('./controllers/attributesController')
-const failuresController = require('./controllers/failuresController')
 const usersController = require('./controllers/usersController')
 
 // const currentActivitiesController = require('./controllers/currentActivitiesController')
@@ -34,20 +31,7 @@ app.post('/user', usersController.createUser)
 app.delete('/user/:id', usersController.deleteUser)
 app.put('/user/:id', usersController.updateUser)
 
-app.get('/attributes', attributesController.getAllAttributes)
-app.post('/attributes', attributesController.createAttribute)
-app.delete('/attributes/:id', attributesController.deleteAttributes)
-app.put('/attributes/:id', attributesController.updateAttributes)
-
-app.get('/failures', failuresController.getAllFailures)
-app.post('/failures', failuresController.createFailures)
-app.delete('/failures/:id', failuresController.deleteFailures)
-app.put('/failures/:id', failuresController.updateFailures)
-
-app.get('/achievements', achievementsController.getAllAchievements)
-app.post('/achievements', achievementsController.createAchievement)
-app.delete('/achievements/:id', achievementsController.deleteAchievement)
-app.put('/achievements/:id', achievementsController.updateAchievement)
+app.post('/register', usersController.registerUser)
 
 app.get('/activities', activitiesController.getActivity)
 app.get('/activities/:id', activitiesController.getActivityById)
