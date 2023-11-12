@@ -1,5 +1,3 @@
-// Activities.jsx
-
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
@@ -10,9 +8,6 @@ export default function Activities() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isActivitySelected, setIsActivitySelected] = useState(true)
   const [isCustomSelected, setIsCustomSelected] = useState(false)
-  // const [isLevelOneSelected, setIsLevelOneSelected] = useState(true)
-  // const [isLevelTwoSelected, setIsLevelTwoSelected] = useState(false)
-  // const [isLevelThreeSelected, setIsLevelThreeSelected] = useState(false)
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible)
@@ -80,15 +75,13 @@ export default function Activities() {
     }))
   }
 
-  // Add Activity Function Here
   const handleAddActivity = async () => {
-    const { activityTitle, activityIcon, activityDay, activityType } = newActivity;
+    const { activityTitle, activityIcon, activityDay, activityType } = newActivity
   
     try {
-      // Check if activityType is provided; modify this condition based on your validation needs
       if (!activityType) {
-        console.error('Activity type is required.');
-        return;
+        console.error('Activity type is required.')
+        return
       }
   
       const response = await axios.post('http://localhost:3001/activities', {
@@ -96,23 +89,16 @@ export default function Activities() {
         activityIcon,
         activityDay,
         activityType,
-      });
+      })
+        const newActivityData = response.data
   
-      // Assuming the response includes the newly added activity data
-      const newActivityData = response.data;
-  
-      // Update the state with the newly added activity
-      setActivity((prevActivities) => [newActivityData, ...prevActivities]);
-  
-      // Close the modal
-      toggleModal();
+      setActivity((prevActivities) => [newActivityData, ...prevActivities])
+        toggleModal()
     } catch (error) {
-      console.error('Error adding activity:', error);
+      console.error('Error adding activity:', error)
     }
-  };
+  }
   
-  
-  // Update Activity Function
   const handleUpdateActivity = async (activityId) => {
     const newTitle = prompt('Enter the new title for the activity:')
     if (newTitle !== null) {
@@ -121,7 +107,6 @@ export default function Activities() {
           activityTitle: newTitle,
         })
 
-        // Update the activities in the state with the new title
         const updatedActivities = activities.map((activity) =>
           activity._id === activityId ? { ...activity, activityTitle: newTitle } : activity
         )
@@ -132,20 +117,15 @@ export default function Activities() {
     }
   }
 
-  // Delete Activity Function
   const handleDeleteActivity = async (activityId) => {
     try {
       await axios.delete(`http://localhost:3001/activities/${activityId}`)
-
-      // Optionally, you can re-fetch the updated list of activities after deletion
       const updatedActivities = activities.filter((activity) => activity._id !== activityId)
       setActivity(updatedActivities)
     } catch (error) {
       console.error('Error deleting activity:', error)
     }
   }
-
-  
 
   return (
     <div className="Activities">
@@ -176,7 +156,6 @@ export default function Activities() {
         </div>
       </div>
 
-      {/* MODAL SECTION */}
       {isModalVisible && (
         <div id="activity-modal" className="activity-modal">
           <div className="activity-content">
@@ -262,23 +241,10 @@ export default function Activities() {
               </div>
             )}
 
-            {/* <h3>Difficulty Level:</h3>
-            <div className="difficulty-btn-container">
-              <button onClick={toggleLevelOne} className="difficulty-btn">
-                Level 1
-              </button>
-              <button onClick={toggleLevelTwo} className="difficulty-btn">
-                Level 2
-              </button>
-              <button onClick={toggleLevelThree} className="difficulty-btn">
-                Level 3
-              </button>
-            </div> */}
             <div className="add-activity-btn-container">
-
-              <button type='submit' onClick={handleAddActivity}
-                className="add-activity-btn">ADD</button>
-
+              <button onClick={handleAddActivity} className="add-activity-btn">
+                ADD
+              </button>
             </div>
           </div>
         </div>
