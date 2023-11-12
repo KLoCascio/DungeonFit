@@ -10,34 +10,74 @@ const main = async () => {
       {
          userName: "Asger1415",
          password: 'werwer',
-         confirmPassword: true,
          userClass: 'Ranger',
          userLevel: 50,
-         achievements: []
+         achievements: [],
+         health: 100,
+         mana: 20,
+         exp: 100000000,
+         attributes: [{ 
+            endurance: 10,
+            strength: 5,
+            willpower: 5,
+            charisma: 5,
+            dexterity: 10,
+            agility: 10
+          }]
       },
       {
          userName: "GluteGoblin",
          password: 'erwer',
-         confirmPassword: true,
          userClass: 'Druid',
          userLevel: 55,
-         achievements: []
+         achievements: [],
+         health: 100,
+         mana: 20,
+         exp: 100000000,
+         attributes: [{ 
+            endurance: 10,
+            strength: 5,
+            willpower: 5,
+            charisma: 5,
+            dexterity: 10,
+            agility: 10
+          }]
       },
       {
          userName: "FitKing",
          password: 'werwer',
-         confirmPassword: true,
          userClass: 'Bard',
          userLevel: 68,
-         achievements: []
+         achievements: [],
+         health: 100,
+         mana: 20,
+         exp: 100000000,
+         attributes: [{ 
+            endurance: 10,
+            strength: 5,
+            willpower: 5,
+            charisma: 5,
+            dexterity: 10,
+            agility: 10
+          }]
       },
       {
          userName: "SneakySquatter",
          password: 'erwr',
-         confirmPassword: true,
          userClass: 'Rogue',
          userLevel: 1,
-         achievements: []
+         achievements: [],
+         health: 100,
+         mana: 20,
+         exp: 100000000,
+         attributes: [{ 
+            endurance: 10,
+            strength: 5,
+            willpower: 5,
+            charisma: 5,
+            dexterity: 10,
+            agility: 10
+          }]
       }
    ]
 
