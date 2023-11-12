@@ -10,12 +10,11 @@ function App() {
 
   return (
     <>
-      {/* Icon and App Name */}
         <Header />
       <div className="Content">
         <Main />
       </div>
-      {/* Footer Will be at the bottom for App Format, Navbar for Browser Setup */}
+
       <div className='footerDiv'>
         <Footer />
       </div>

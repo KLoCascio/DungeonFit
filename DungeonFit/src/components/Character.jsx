@@ -1,4 +1,3 @@
-// PROFILE
 import Inventory from './Inventory'
 import Abilities from './Abilities'
 import Quests from './Quests'
@@ -8,13 +7,7 @@ import { useParams, Link } from 'react-router-dom'
 
 import axios from 'axios'
 
-// MVP: component shows user's most recently completed achievements on the home page.
-// Stretch: component shows user's friends/group's recently completed achievements on the home page.
-
-// route should be /character
-
 export default function Character() {
-    // useState for toggle between inventory/quests/abilities
     const [isInventoryVisible, setIsInventoryVisible] = useState(true)
     const [isQuestsVisible, setIsQuestsVisible] = useState(false)
     const [isAbilitiesVisible, setIsAbilitiesVisible] = useState(false)
@@ -37,12 +30,10 @@ export default function Character() {
         setIsAbilitiesVisible(true)
     }
 
-
-
     return (
         <div className="Character">
 
-            <img src={Hero} alt="Hero Portrait" className="hero-full-image"/>
+            <img src={Hero} alt="Hero Portrait" className="hero-full-image" />
             {/* <h2> {user.userName} {user.userClass} {user.userLevel} </h2> */}
             <ul>Defensive</ul>
             {/* <li>HP: {user.attHP}</li>

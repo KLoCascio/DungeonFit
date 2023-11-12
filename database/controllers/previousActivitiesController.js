@@ -40,13 +40,11 @@ const updatePreviousActivity = async (req, res) => {
         const PreviousActivities = await PreviousActivity.findByIdAndUpdate(id, req.body, { new: true })
         if (PreviousActivities) {
             return res.status(200).json(Users)
-        } 
+        }
     } catch (e) {
         return res.status(500).send(e.message)
     }
 }
-
-
 
 module.exports = {
     getPreviousActivity,

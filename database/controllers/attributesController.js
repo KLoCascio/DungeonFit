@@ -40,13 +40,11 @@ const updateAttributes = async (req, res) => {
         const AttributesUpdate = await Attributes.findByIdAndUpdate(id, req.body, { new: true })
         if (AttributesUpdate) {
             return res.status(200).json(AttributesUpdate)
-        } 
+        }
     } catch (e) {
         return res.status(500).send(e.message)
     }
 }
-
-
 
 module.exports = {
     getAllAttributes,

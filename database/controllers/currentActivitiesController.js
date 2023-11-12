@@ -40,13 +40,11 @@ const updateCurrentActivity = async (req, res) => {
         const CurrentActivityUpdate = await CurrentActivity.findByIdAndUpdate(id, req.body, { new: true })
         if (CurrentActivityUpdate) {
             return res.status(200).json(CurrentActivityUpdate)
-        } 
+        }
     } catch (e) {
         return res.status(500).send(e.message)
     }
 }
-
-
 
 module.exports = {
     getCurrentActivity,
