@@ -94,6 +94,37 @@ export default function Activities() {
     }
   }
 
+  // Update Activity Function
+  const handleUpdateActivity = async (activityId) => {
+    const newTitle = prompt('Enter the new title for the activity:')
+    if (newTitle !== null) {
+      try {
+        const response = await axios.put(`http://localhost:3001/activities/${activityId}`, {
+          activityTitle: newTitle,
+        })
+        // Update the activities in the state with the new title
+        const updatedActivities = activities.map((activity) =>
+          activity._id === activityId ? { ...activity, activityTitle: newTitle } : activity
+        )
+        setActivity(updatedActivities)
+      } catch (error) {
+        console.error('Error updating activity:', error)
+      }
+    }
+  }
+
+  // Delete Activity Function
+  const handleDeleteActivity = async (activityId) => {
+    try {
+      await axios.delete(`http://localhost:3001/activities/${activityId}`)
+      // Optionally, you can re-fetch the updated list of activities after deletion
+      const updatedActivities = activities.filter((activity) => activity._id !== activityId)
+      setActivity(updatedActivities)
+    } catch (error) {
+      console.error('Error deleting activity:', error)
+    }
+  }
+
   return (
     <div className="Activities">
       <div className="Completed-Activities">
@@ -104,13 +135,21 @@ export default function Activities() {
           </button>
           {activities &&
             activities.map((activity) => (
-              <Link to={`/activities/${activity._id}`} key={activity._id} className="activity-card">
-                <div className="details">
-                  <img className="activity-icon" src={activity.activityIcon} alt="Activity Icon" />
-                  <h2 className="activity-title">{activity.activityTitle}</h2>
-                  <h3 className="activity-day">{activity.activityDay}</h3>
-                </div>
-              </Link>
+              <div key={activity._id} className="activity-card">
+                <Link to={`/activities/${activity._id}`} key={activity._id} className="activity-card">
+                  <div className="details">
+                    <img className="activity-icon" src={activity.activityIcon} alt="Activity Icon" />
+                    <h2 className="activity-title">{activity.activityTitle}</h2>
+                    <h3 className="activity-day">{activity.activityDay}</h3>
+                  </div>
+                </Link>
+                <button onClick={() => handleUpdateActivity(activity._id)} className="update-button">
+                  Update
+                </button>
+                <button onClick={() => handleDeleteActivity(activity._id)} className="delete-button">
+                  Delete
+                </button>
+              </div>
             ))}
         </div>
       </div>
