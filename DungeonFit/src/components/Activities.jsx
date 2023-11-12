@@ -220,9 +220,14 @@ export default function Activities() {
               </button>
             </div>
             <div className="add-activity-btn-container">
+<<<<<<< HEAD
+              <button type='submit' onClick={handleAddActivity}
+                className="add-activity-btn">ADD</button>
+=======
               <button onClick={handleAddActivity} className="add-activity-btn">
                 ADD
               </button>
+>>>>>>> 932d1de215264be0991972f9e2ca3c382d469e25
             </div>
           </div>
         </div>

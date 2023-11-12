@@ -104,6 +104,15 @@
   margin-bottom: 5px;
 }
 
+.custom-input {
+  line-height: 30px;
+  
+}
+
+select {
+  height: 30px;
+}
+
 .add-activity-btn {
   grid-area: card1; 
   justify-self: end; 
