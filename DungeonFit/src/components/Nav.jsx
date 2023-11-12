@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="Navbar">
             <button className="nav-link"><Link to="/character">Character</Link> </button>
             <button className="nav-link"><Link to="/activities"> Activities</Link></button>
-            <button className="nav-link"><Link to="/"><img src={Logo} alt="Logo"></img></Link></button>
+            <button className="nav-logo"><Link to="/"><img src={Logo} alt="Logo"></img></Link></button>
             <button className="nav-link"><Link to="/checkin"> Check-In</Link></button>
             <button className="nav-link"><Link to="/party"> Party</Link></button>
         </div>

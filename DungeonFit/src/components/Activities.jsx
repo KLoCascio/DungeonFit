@@ -14,6 +14,8 @@ export default function Activities() {
   // const [isLevelTwoSelected, setIsLevelTwoSelected] = useState(false)
   // const [isLevelThreeSelected, setIsLevelThreeSelected] = useState(false)
 
+  
+
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible)
   }
@@ -269,6 +271,7 @@ export default function Activities() {
 
               <button type='submit' onClick={handleAddActivity}
                 className="add-activity-btn">ADD</button>
+
             </div>
           </div>
         </div>
