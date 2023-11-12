@@ -9,13 +9,13 @@ const NavMobile = () => {
   return (
     <div className='mobileNavDiv'>
       
-      <div >
+      
             <button className="mobile-link"><Link to="/character"><GiBrutalHelm /></Link></button>
             <button className="mobile-link"><Link to="/activities"><CiDumbbell /></Link></button>
             <button className="mobile-link"><Link to="/achievements"><GrTrophy /></Link></button>
             <button className="mobile-link"><Link to="/checkin"> <GiCompass /></Link></button>
             <button className="mobile-link"><Link to="/party"> <FaPeopleGroup/></Link></button>
-        </div>
+        
     </div>
   )
 }
