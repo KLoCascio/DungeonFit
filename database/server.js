@@ -8,12 +8,9 @@ const methodOverride = require('method-override')
 
 const PORT = process.env.PORT || 3001
 
+const achievementsController = require('./controllers/achievementsController')
 const activitiesController = require('./controllers/activitiesController')
 const usersController = require('./controllers/usersController')
-
-// const currentActivitiesController = require('./controllers/currentActivitiesController')
-// const previousActivitiesController = require('./controllers/previousActivitiesController')
-
 
 app.use(methodOverride('_method'))
 app.use(cors())
@@ -32,6 +29,11 @@ app.delete('/user/:id', usersController.deleteUser)
 app.put('/user/:id', usersController.updateUser)
 
 app.post('/register', usersController.registerUser)
+
+app.get('/achievements', achievementsController.getAllAchievements)
+app.post('/achievements', achievementsController.createAchievement)
+app.delete('/achievements/:id', achievementsController.deleteAchievement)
+app.put('/achievements/:id', achievementsController.updateAchievement)
 
 app.get('/activities', activitiesController.getActivity)
 app.get('/activities/:id', activitiesController.getActivityById)
