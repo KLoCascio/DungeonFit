@@ -23,7 +23,7 @@ const Main = (props) => {
                 <Route path="/createaccount" element={<CreateAccount createAccount={props.createAccount}/>} />
                 <Route path="/party" element={<Party party={props.party}/>} />
                 <Route path="/activities" element={<Activities activities={props.activities}/>} />
-                <Route path="/activities/:id" element={<ActivityDetails />} />
+                <Route path="/activities/:id" element={<ActivityDetails activities={props.activities} />} />
                 <Route path="/checkin" element={<Checkin checkin={props.checkin}/>} />
                 <Route path="/invite" element={<Invite invite={props.invite}/>} />
             </Routes>

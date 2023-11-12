@@ -98,35 +98,6 @@ export default function Activities() {
       console.error('Error adding activity:', error)
     }
   }
-  
-  const handleUpdateActivity = async (activityId) => {
-    const newTitle = prompt('Enter the new title for the activity:')
-    if (newTitle !== null) {
-      try {
-        const response = await axios.put(`http://localhost:3001/activities/${activityId}`, {
-          activityTitle: newTitle,
-        })
-
-        const updatedActivities = activities.map((activity) =>
-          activity._id === activityId ? { ...activity, activityTitle: newTitle } : activity
-        )
-        setActivity(updatedActivities)
-      } catch (error) {
-        console.error('Error updating activity:', error)
-      }
-    }
-  }
-
-  const handleDeleteActivity = async (activityId) => {
-    try {
-      await axios.delete(`http://localhost:3001/activities/${activityId}`)
-      const updatedActivities = activities.filter((activity) => activity._id !== activityId)
-      setActivity(updatedActivities)
-    } catch (error) {
-      console.error('Error deleting activity:', error)
-    }
-  }
-
   return (
     <div className="Activities">
       <div className="Completed-Activities">
@@ -145,12 +116,6 @@ export default function Activities() {
                     <h3 className="activity-day">{activity.activityDay}</h3>
                   </div>
                 </Link>
-                <button onClick={() => handleUpdateActivity(activity._id)} className="update-button">
-                  Update
-                </button>
-                <button onClick={() => handleDeleteActivity(activity._id)} className="delete-button">
-                  Delete
-                </button>
               </div>
             ))}
         </div>
@@ -197,7 +162,7 @@ export default function Activities() {
                   value={newActivity.activityIcon}
                   onChange={handleInputChange}
                 >
-                  <option value="select">Select Icon</option>
+                  <option value="select">Rest Day?</option>
                   <option value="./src/assets/icons/RestIcon.png">Yes</option>
                   <option value="./src/assets/icons/LiftIcon.png">No</option>
                 </select>
