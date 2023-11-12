@@ -46,21 +46,24 @@ export default function ActivityDetails() {
     }, [id])
 
     return activity ? (
-        <div className="activity-details">
-            <img className="activity-icon" src={`/${activity.activityIcon}`} alt="Activity Icon" />
-            <h2 className="activity-title">{activity.activityTitle}</h2>
-            <h3 className="activity-day">{activity.activityDay}</h3>
-
-            <button onClick={handleUpdateActivity} className="update-button">
-                Update
-            </button>
-            <button onClick={handleDeleteActivity} className="delete-button">
-                Delete
-            </button>
+        <>
+            <div className="activity-details">
+                <img className="activity-icon" src={`/${activity.activityIcon}`} alt="Activity Icon" />
+                <h2 className="activity-title">{activity.activityTitle}</h2>
+                <h3 className="activity-day">{activity.activityDay}</h3>
+                <div className="details-button-container">
+                    <button onClick={handleUpdateActivity} className="update-button">
+                        Update
+                    </button>
+                    <button onClick={handleDeleteActivity} className="delete-button">
+                        Delete
+                    </button>
+                </div>
+            </div>
             <Link to="/activities" className="return-link">
-                Return
+                <img src="../src/assets/icons/BackIcon.png" />
             </Link>
-        </div>
+        </>
     ) : (
         <h2 className="Loading">Loading Activity!</h2>
     )

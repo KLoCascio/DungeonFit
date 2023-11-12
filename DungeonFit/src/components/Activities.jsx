@@ -20,21 +20,7 @@ export default function Activities() {
     setIsCustomSelected(true)
     setIsActivitySelected(false)
   }
-  const toggleLevelOne = () => {
-    setIsLevelOneSelected(true)
-    setIsLevelTwoSelected(false)
-    setIsLevelThreeSelected(false)
-  }
-  const toggleLevelTwo = () => {
-    setIsLevelTwoSelected(true)
-    setIsLevelOneSelected(false)
-    setIsLevelThreeSelected(false)
-  }
-  const toggleLevelThree = () => {
-    setIsLevelThreeSelected(true)
-    setIsLevelOneSelected(false)
-    setIsLevelTwoSelected(false)
-  }
+
   const closeOnOutsideClick = (e) => {
     if (isModalVisible && !e.target.closest('.activity-content')) {
       setIsModalVisible(false)
@@ -45,10 +31,12 @@ export default function Activities() {
     const getActivity = async () => {
       try {
         const response = await axios.get('http://localhost:3001/activities')
-        const recentActivities = response.data.slice(0, 5)
+        const allActivities = response.data
+        const sortedActivities = allActivities.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        const recentActivities = sortedActivities.slice(0, 5)
         setActivity(recentActivities)
       } catch (error) {
-        console.error('Error fetching activities:', error)
+        console.error('Error fetching and sorting activities:', error)
       }
     }
     getActivity()
@@ -77,13 +65,12 @@ export default function Activities() {
 
   const handleAddActivity = async () => {
     const { activityTitle, activityIcon, activityDay, activityType } = newActivity
-  
+
     try {
       if (!activityType) {
         console.error('Activity type is required.')
         return
       }
-  
       const response = await axios.post('http://localhost:3001/activities', {
         activityTitle,
         activityIcon,
@@ -91,7 +78,6 @@ export default function Activities() {
         activityType,
       })
         const newActivityData = response.data
-  
       setActivity((prevActivities) => [newActivityData, ...prevActivities])
         toggleModal()
     } catch (error) {
@@ -201,11 +187,8 @@ export default function Activities() {
                   <option value="Rest">Rest</option>
                   <option value="Other">Other</option>
                 </select>
-
-
               </div>
             )}
-
             <div className="add-activity-btn-container">
               <button onClick={handleAddActivity} className="add-activity-btn">
                 ADD
