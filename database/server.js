@@ -16,12 +16,12 @@ app.use(methodOverride('_method'))
 app.use(cors())
 app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(express.urlencoded( { extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 app.use((err, req, res, next) => {
-    console.error(err.stack)
-    res.status(500).json({ error: 'Internal Server Error' })
-  })
+  console.error(err.stack)
+  res.status(500).json({ error: 'Internal Server Error' })
+})
 
 app.get('/user', usersController.getAllUsers)
 app.post('/user', usersController.createUser)

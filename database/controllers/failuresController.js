@@ -40,13 +40,11 @@ const updateFailures = async (req, res) => {
         const Failure = await Failures.findByIdAndUpdate(id, req.body, { new: true })
         if (Failure) {
             return res.status(200).json(Failure)
-        } 
+        }
     } catch (e) {
         return res.status(500).send(e.message)
     }
 }
-
-
 
 module.exports = {
     getAllFailures,

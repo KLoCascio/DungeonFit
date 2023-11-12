@@ -25,7 +25,7 @@ async function createActivity(req, res) {
         return res.status(201).json(newActivity);
     } catch (e) {
         console.error('Error creating activity:', e);
-        console.error('Request Body:', req.body); 
+        console.error('Request Body:', req.body);
         return res.status(500).json({ error: 'Internal Server Error' });
     }
 }

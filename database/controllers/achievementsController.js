@@ -40,7 +40,7 @@ const updateAchievement = async (req, res) => {
         const achievementUpdate = await Achievements.findByIdAndUpdate(id, req.body, { new: true })
         if (achievementUpdate) {
             return res.status(200).json(achievementUpdate)
-        } 
+        }
     } catch (e) {
         return res.status(500).send(e.message)
     }

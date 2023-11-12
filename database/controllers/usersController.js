@@ -1,16 +1,14 @@
 const bcrypt = require('bcrypt')
 const { User } = require('../models');
 
-
-
 const registerUser = async (req, res) => {
     try {
         const { userName, password } = req.body;
-        const existingUser = await User.findOne({userName: userName });
+        const existingUser = await User.findOne({ userName: userName });
         if (existingUser) {
             return res.status(400).json({ error: 'Username is already taken' });
-    }
-    const hashedPassword = await bcrypt.hash(password, 10);
+        }
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user
         const newUser = new User({
@@ -28,12 +26,11 @@ const registerUser = async (req, res) => {
             },
         });
 
-} catch (error) {
-    console.error(error);
+    } catch (error) {
+        console.error(error);
         res.status(500).json({ error: 'Internal Server Error' })
     }
 }
-
 
 const getAllUsers = async (req, res) => {
     try {
@@ -75,13 +72,11 @@ const updateUser = async (req, res) => {
         const Users = await User.findByIdAndUpdate(id, req.body, { new: true })
         if (Users) {
             return res.status(200).json(Users)
-        } 
+        }
     } catch (e) {
         return res.status(500).send(e.message)
     }
 }
-
-
 
 module.exports = {
     getAllUsers,
