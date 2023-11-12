@@ -14,8 +14,6 @@ export default function Activities() {
   // const [isLevelTwoSelected, setIsLevelTwoSelected] = useState(false)
   // const [isLevelThreeSelected, setIsLevelThreeSelected] = useState(false)
 
-  
-
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible)
   }
@@ -143,6 +141,8 @@ export default function Activities() {
       console.error('Error deleting activity:', error)
     }
   }
+
+  
 
   return (
     <div className="Activities">

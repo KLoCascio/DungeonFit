@@ -52,14 +52,7 @@ app.put('/achievements/:id', achievementsController.updateAchievement)
 
 app.get('/activities', activitiesController.getActivity)
 app.get('/activities/:id', activitiesController.getActivityById)
-app.post('/activities', async (req, res, next) => {
-    try {
-      const result = await activitiesController.createActivity(req.body)
-      res.status(201).json(result)
-    } catch (error) {
-      next(error) 
-    }
-  })
+app.post('/activities', activitiesController.createActivity)
 app.delete('/activities/:id', activitiesController.deleteActivity)
 app.put('/activities/:id', activitiesController.updateActivity)
 
