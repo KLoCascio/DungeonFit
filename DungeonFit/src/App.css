@@ -109,6 +109,11 @@ body {
 }
 
 /* ==== PARTY PAGE ==== */
+.members {
+  font-size: 18px;
+  color: #fff;
+}
+
 .add-members {
   background-color: #250D2F;
 }
@@ -121,10 +126,217 @@ body {
 .challenge-name {
   line-height: 30px;
   font-size: 16px;
+  color: #000;
   background-color: #ffffff;
   border-radius: 5px;
   padding-left: 1rem;
 }
+
+.challenge-description {
+  line-height: 30px;
+  font-size: 16px;
+  color: #000;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding-left: 1rem;
+}
+
+/* ======== CALENDAR ======== */
+
+.react-calendar {
+  width: 93%;
+  margin: 2rem;
+  padding: 1rem;
+  justify-content: center;
+  background: #250D2F;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+  border-radius: 10px;
+}
+
+/* .react-calendar--doubleView {
+  width: 700px;
+} */
+
+/* .react-calendar--doubleView .react-calendar__viewContainer {
+  display: flex;
+  margin: -0.5em;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+  width: 50%;
+  margin: 0.5em;
+} */
+
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.react-calendar button {
+  border: 2px solid #3EB8D6;
+  border-radius: 5px;
+  /* color: #fff; */
+  height: 4rem;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #12192C;
+}
+
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+  background-color: #3eb8d6;
+  border: 4px solid #083cc9;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  height: 44px;
+  margin-bottom: 2em;
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #12192C;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: #999;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #3EB8D6;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days__day {
+  color: #fff;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #757575;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px 6.6667px;
+  background: none;
+  text-align: center;
+  line-height: 16px;
+  font: inherit;
+  font-size: 0.833em;
+}
+
+.react-calendar__tile:disabled {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #e6e6e6;
+}
+
+.react-calendar__tile--now {
+  background: #ffff76;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ffffa9;
+}
+
+.react-calendar__tile--hasActive {
+  background: #76baff;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #a9d4ff;
+}
+
+.react-calendar__tile--active {
+  background: #006edc;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #1087ff;
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #3EB8D6;
+}
+
+
+/* ===== INVITE PAGE ===== */
+.invite-button {
+  background-color: #FE9F29;
+  border: 2px solid #fff;
+  color: #000;
+  border-radius: 10px;
+  font-weight: 600;
+  
+}
+
+.invite-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.invite-message {
+  text-align: center;
+  align-items: center;
+  width: 50%;
+  justify-content: center;
+  background-color: #250D2F;
+  color: #fff;
+  margin: 2rem 0;
+  border-radius: 10px;
+}
+
+
+
+/* ==== ACTIVITY PAGE ==== */
 
 .difficulty-btn-container {
   display: grid;
@@ -173,20 +385,7 @@ select {
   height: 30px;
 }
 
-.invite-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
 
-.invite-message {
-  text-align: center;
-  align-items: center;
-  width: 50%;
-  justify-content: center;
-
-}
 
 .add-activity-btn {
   grid-area: card1; 
@@ -313,6 +512,17 @@ select {
   box-shadow: 2px 1px 3px #000000a9;
   padding: 3px 5px;
   margin: 0 5px;
+  }
+
+  .invite-message {
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    justify-content: center;
+    background-color: #250D2F;
+    color: #fff;
+    margin: 2rem 0;
+    border-radius: 10px;
   }
 }
 
