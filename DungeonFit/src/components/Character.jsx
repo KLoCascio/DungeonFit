@@ -2,6 +2,7 @@
 import Inventory from './Inventory'
 import Abilities from './Abilities'
 import Quests from './Quests'
+import Hero from '../assets/Heros/Hero1.png'
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
@@ -40,7 +41,8 @@ export default function Character() {
 
     return (
         <div className="Character">
-            <img src="#" alt="Hero Portrait" />
+
+            <img src={Hero} alt="Hero Portrait" className="hero-full-image"/>
             {/* <h2> {user.userName} {user.userClass} {user.userLevel} </h2> */}
             <ul>Defensive</ul>
             {/* <li>HP: {user.attHP}</li>

@@ -204,6 +204,12 @@ select {
 }
 
 /* ==== CHARACTER ==== */
+.hero-full-image {
+  margin-top: 20px;
+  border: 5px solid #ffffffcb;
+  border-radius: 3px;
+  box-shadow: 0 0 20px #fff;
+}
 .achievements a {
   color: #fff;
   font-size: 18px;
@@ -242,8 +248,26 @@ select {
 }
 
 @media only screen and (max-width: 600px) {
+  .Header {
+    
+  }
+  
   .Navbar {
+    /* display: none; */
+    height: 100px;
+  }
+
+  .Navbar a {
     display: none;
+    
+  }
+
+  .hero-full-image {
+    margin-top: 20px;
+    height: 250px;
+    border: 5px solid #ffffffcb;
+    border-radius: 3px;
+    box-shadow: 0 0 20px #fff;
   }
   
   .footerDiv {
