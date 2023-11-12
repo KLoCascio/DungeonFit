@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import BackIcon from "../assets/icons/BackIcon.svg"
 import axios from 'axios'
 
 export default function ActivityDetails() {
@@ -61,7 +62,7 @@ export default function ActivityDetails() {
                 </div>
             </div>
             <Link to="/activities" className="return-link">
-                <img src="../src/assets/icons/BackIcon.png" />
+                <img src={BackIcon} />
             </Link>
         </>
     ) : (
