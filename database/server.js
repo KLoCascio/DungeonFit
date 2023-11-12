@@ -49,21 +49,10 @@ app.post('/achievements', achievementsController.createAchievement)
 app.delete('/achievements/:id', achievementsController.deleteAchievement)
 app.put('/achievements/:id', achievementsController.updateAchievement)
 
-
 app.get('/activities', activitiesController.getActivity)
 app.get('/activities/:id', activitiesController.getActivityById)
 app.post('/activities', activitiesController.createActivity)
 app.delete('/activities/:id', activitiesController.deleteActivity)
 app.put('/activities/:id', activitiesController.updateActivity)
-
-// app.get('/current-activity', currentActivitiesController.getCurrentActivity)
-// app.post('/current-activity', currentActivitiesController.createActivity)
-// app.delete('/current-activity/:id', currentActivitiesController.deleteCurrentActivity)
-// app.put('/current-activity/:id', currentActivitiesController.updateCurrentActivity)
-
-// app.get('/previous-activities', previousActivitiesController.getPreviousActivity)
-// app.post('/previous-activities', previousActivitiesController.createPreviousActivity)
-// app.delete('/previous-activities/:id', previousActivitiesController.deletePreviousActivity)
-// app.put('/previous-activities/:id', previousActivitiesController.updatePreviousActivity)
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
