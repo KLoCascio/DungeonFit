@@ -80,35 +80,38 @@ export default function Activities() {
     }))
   }
 
+  // Add Activity Function Here
   const handleAddActivity = async () => {
-    console.log('Add Button Clicked')
-    if (newActivity.activityTitle) {
-      try {
-        const response = await axios.post(`http://localhost:3001/activities`, {
-          activityTitle: newActivity.activityTitle,
-          activityIcon: newActivity.activityIcon,
-          activityDay: newActivity.activityDay,
-          activityType: newActivity.activityType,
-        })
-
-        const createdActivity = response.data
-        console.log('Activity added:', createdActivity)
-
-        setActivity([...activities, createdActivity])
-        setNewActivity({
-          activityTitle: '',
-          activityIcon: '',
-          activityDay: '',
-          activityType: '',
-        })
-      } catch (error) {
-        console.error('Error adding activity:', error)
+    const { activityTitle, activityIcon, activityDay, activityType } = newActivity;
+  
+    try {
+      // Check if activityType is provided; modify this condition based on your validation needs
+      if (!activityType) {
+        console.error('Activity type is required.');
+        return;
       }
-    } else {
-      alert('Please Make All Selections')
+  
+      const response = await axios.post('http://localhost:3001/activities', {
+        activityTitle,
+        activityIcon,
+        activityDay,
+        activityType,
+      });
+  
+      // Assuming the response includes the newly added activity data
+      const newActivityData = response.data;
+  
+      // Update the state with the newly added activity
+      setActivity((prevActivities) => [newActivityData, ...prevActivities]);
+  
+      // Close the modal
+      toggleModal();
+    } catch (error) {
+      console.error('Error adding activity:', error);
     }
-  }
-
+  };
+  
+  
   // Update Activity Function
   const handleUpdateActivity = async (activityId) => {
     const newTitle = prompt('Enter the new title for the activity:')
@@ -198,6 +201,7 @@ export default function Activities() {
               <div className="custom-tab">
                 <h3>Name of Activity:</h3>
                 <input
+                  name="string"
                   type="text"
                   id="activityTitle"
                   className="custom-input"
@@ -208,8 +212,9 @@ export default function Activities() {
 
                 <h3>Rest Day:</h3>
                 <select
-                  name="type"
-                  id="icon-select"
+                  name="string"
+                  type="text"
+                  id="activityIcon"
                   value={newActivity.activityIcon}
                   onChange={handleInputChange}
                 >
@@ -220,8 +225,9 @@ export default function Activities() {
 
                 <h3>Day of Workout:</h3>
                 <select
-                  name="type"
-                  id="day-select"
+                  name="string"
+                  type="text"
+                  id="activityDay"
                   value={newActivity.activityDay}
                   onChange={handleInputChange}
                 >
@@ -237,8 +243,9 @@ export default function Activities() {
 
                 <h3>Type of Workout:</h3>
                 <select
-                  name="type"
-                  id="type-select"
+                  name="string"
+                  type="type"
+                  id="activityType"
                   value={newActivity.activityType}
                   onChange={handleInputChange}
                 >
