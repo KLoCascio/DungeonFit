@@ -53,7 +53,7 @@ body {
 }
 
 
-.login-userName {
+input {
   margin: 0 0 1rem 0;
   background-color: #fff;
   color: #000;
@@ -63,7 +63,7 @@ body {
   font-size: 1rem;
 }
 
-.login-password {
+/* .login-password {
   margin: 0 0 1rem 0;
   background-color: #fff;
   color: #000;
@@ -71,7 +71,7 @@ body {
   border-radius: 5px;
   padding-left: 0.5rem;
   font-size: 1rem;
-}
+} */
 
 label {
   font-size: 1rem;
@@ -101,6 +101,26 @@ label {
   color: #fff;
   text-decoration: none;
 }
+
+
+
+/* ====== CREATE ACCOUNT PAGE ====== */
+
+.Create-Account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-account-logo {
+  margin: 2rem 0 3rem 0;
+  padding: .3rem;
+  background-color: #250D2F;
+  border: 5px outset #888;
+  box-shadow: 0 0 1.5rem #FF7727;
+}
+
 
 
 /* ==== ACTIVITY PAGE ==== */
@@ -252,13 +272,25 @@ select {
 }
 
 /* ==== PARTY PAGE ==== */
+.Party {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .members {
   font-size: 18px;
   color: #fff;
 }
 
 .add-members {
-  background-color: #250D2F;
+  border-radius: 10px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 10px 25px;
+  margin: 0 5px;
 }
 
 .add-members a {

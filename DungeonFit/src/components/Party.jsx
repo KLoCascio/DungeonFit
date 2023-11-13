@@ -82,7 +82,7 @@ export default function Party() {
             Selected date: {date.toDateString()}
           </div>
         </div>
-            <button type="submit">Submit Challenge!</button>
+            <button type="submit" className="add-members">Submit Challenge!</button>
       </form>
     </div>
   );
