@@ -1,21 +1,22 @@
 const bcrypt = require('bcrypt')
-const { User } = require('../models');
+const jwt = require('jsonwebtoken')
+const { User } = require('../models')
 
 const registerUser = async (req, res) => {
     try {
-        const { userName, password } = req.body;
-        const existingUser = await User.findOne({ userName: userName });
+        const { userName, password } = req.body
+        const existingUser = await User.findOne({ userName: userName })
         if (existingUser) {
-            return res.status(400).json({ error: 'Username is already taken' });
+            return res.status(400).json({ error: 'Username is already taken' })
         }
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10)
 
         // Create a new user
         const newUser = new User({
             userName,
             password: hashedPassword,
         });
-        await newUser.save();
+        await newUser.save()
 
         // Respond with a success message or the created user details
         res.status(201).json({
@@ -27,10 +28,52 @@ const registerUser = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
+        console.error(error)
         res.status(500).json({ error: 'Internal Server Error' })
     }
 }
+
+const loginUser = async (req, res) => {
+    try {
+        const { userName, password } = req.body
+        const user = await User.findOne({ userName })
+
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid username or password' });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordValid) {
+            return res.status(401).json({ error: 'Invalid username or password' })
+        }
+
+        // Create and sign the JWT token
+        const token = jwt.sign({ userId: user._id, userName: user.userName }, 'your-secret-key', {
+            expiresIn: '1h', // Time for life of token
+        });
+
+        res.status(200).json({
+            message: 'Login successful',
+            token,
+            user: {
+                id: user._id,
+                username: user.userName,
+            },
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+
+
+
+
+
+
 
 const getAllUsers = async (req, res) => {
     try {
@@ -83,5 +126,6 @@ module.exports = {
     createUser,
     deleteUser,
     updateUser,
-    registerUser
+    registerUser,
+    loginUser
 }

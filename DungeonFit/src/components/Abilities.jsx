@@ -11,7 +11,7 @@ export default function Abilities() {
     }
     return (
         <>
-            <p>This is the Abilities Component being rendered.</p>
+            <p>Thies is the Abilities Component being rendered.</p>
         </>
     )
 

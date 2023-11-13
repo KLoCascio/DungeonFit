@@ -28,6 +28,7 @@ app.post('/user', usersController.createUser)
 app.delete('/user/:id', usersController.deleteUser)
 app.put('/user/:id', usersController.updateUser)
 
+app.post('/login', usersController.loginUser)
 app.post('/register', usersController.registerUser)
 
 app.get('/achievements', achievementsController.getAllAchievements)

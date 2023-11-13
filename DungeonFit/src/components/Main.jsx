@@ -11,6 +11,7 @@ import Checkin from './Checkin'
 import Invite from './Invite'
 import ActivityDetails from '../details/ActivityDetails'
 
+
 const Main = (props) => {
     
     return (
