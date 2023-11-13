@@ -14,7 +14,7 @@ function App() {
       <div className="Content">
         <Main />
       </div>
-      <SignUp />
+      
       <div className='footerDiv'>
         <Footer />
       </div>
