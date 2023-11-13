@@ -36,7 +36,6 @@ export default function Achievements() {
                             <div key={achievements._id} className="achievement-card">
                                 <Link to={`/achievements/${achievements._id}`} key={achievements._id} className="achievement-card">
                                     <div className="achievement-details">
-                                        <img className="achievement-icon" src={achievements.achieveIcon} alt="Achievement Icon" />
                                         <h2 className="achievement-title">{achievements.achieveTitle}</h2>
                                         <h3 className="achievement-description">{achievements.achieveDescription}</h3>
                                     </div>
