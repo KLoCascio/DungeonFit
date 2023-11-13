@@ -437,6 +437,39 @@ select {
   margin: 0 5px;
 }
 
+/* Achievements.jsx */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-areas: 
+    "card1" 
+    "card2"
+    "card3" 
+    "card4"
+    "card5"
+    "card6"
+    "card7"
+    "card8";
+}
+
+.achievement-details {
+  border-radius: 8px;
+  margin: 25px;
+  padding: 30px;
+  text-align: center;
+  background-color: #250d2f;
+  color: white;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-row-gap: 0px;
+}
+
+
+.achievement-details img {
+  width: 60px;
+  float: left;
+}
+
 .footerDiv {
   display: none;
 }

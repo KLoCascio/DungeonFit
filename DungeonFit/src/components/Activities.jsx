@@ -36,7 +36,7 @@ export default function Activities() {
         const recentActivities = sortedActivities.slice(0, 5)
         setActivity(recentActivities)
       } catch (error) {
-        console.error('Error fetching and sorting activities:', error)
+        console.error('Error fetching and sorting Activities:', error)
       }
     }
     getActivity()
@@ -77,9 +77,9 @@ export default function Activities() {
         activityDay,
         activityType,
       })
-        const newActivityData = response.data
+      const newActivityData = response.data
       setActivity((prevActivities) => [newActivityData, ...prevActivities])
-        toggleModal()
+      toggleModal()
     } catch (error) {
       console.error('Error adding activity:', error)
     }
