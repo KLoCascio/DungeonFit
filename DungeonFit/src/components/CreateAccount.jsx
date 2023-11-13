@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { useParams, Link } from 'react-router-dom'
+import createAccountLogo from '../assets/logo/CreateAccountLogo.svg'
 import axios from 'axios'
 
 const SignUp = () => {
@@ -52,12 +53,15 @@ const SignUp = () => {
       };
 
     return (
-        <div className="Signup">
-            <img src="#" alt="Login Logo"></img>
-            <h1> Create Account</h1>
+        <div className="Create-Account">
+            <img src={createAccountLogo} alt="Login Logo" className="create-account-logo"></img>
+            <h2 className="title"> Create Account</h2>
             <form onSubmit={handleSubmit} className="signup-form">
 
             <label htmlFor="userName">username:</label>
+
+            <br />
+
             <input
                 type="text"
                 id="userName"
@@ -66,16 +70,26 @@ const SignUp = () => {
                 onChange={handleChange}
             />
 
+            <br />
+
             <label htmlFor="password">Password:</label>
+
+            <br />
+
             <input
                 type="password"
                 id="password"
                 placeholder="Enter password..."
                 value={form.password}
                 onChange={handleChange}
-            />    
+            />   
+
+            <br /> 
 
             <label htmlFor="passwordConfirm">Confirm Password:</label>
+
+            <br />
+
             <input
                 type="password"
                 id="passwordConfirm"
@@ -84,8 +98,10 @@ const SignUp = () => {
                 onChange={handleChange}
                 />
 
+                <br />
 
-            <button type="submit" className="signup-button">Create Account</button>
+
+            <button type="submit" className="login-button">Create Account</button>
             </form>
         </div>
     )
