@@ -1,5 +1,3 @@
-// PROFILE
-
 import { useEffect, useState } from "react"
 import { useParams, Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
@@ -8,43 +6,50 @@ import loginLogo from '../assets/logo/signInLogo.svg'
 import axios from 'axios'
 
 const Login = () => {
-    const login = {
-        username: '',
+    const [token, setToken] = useState(null)
+
+    const [form, setForm] = useState({
+        userName: '',
         password: '',
-        // valid: 'Password must match'
+      });
+
+      const handleChange = (e) => {
+        const { name, value } = e.target
+        setForm({...form, [name]: value,
+        })
     }
 
-    const navigate = useNavigate()
-
-    const [formState, setFormState] = useState(login)
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(formState)
-        navigate("/")
-    }
 
-    const handleChange = e => {
-        const { id, value } = e.target
-        setFormState({...formState, [id]: value})
+        try {
+            const response = await axios.post('http://localhost:3001/login', form)
+            const { token, user } = response.data
+
+            setToken(token)
+            console.log('Logged in user:', user)
+        } catch (e) {
+            console.error('Login failed:', e)
+        }
     }
 
     return (
         <div className="Login">
             <img src={loginLogo} alt="Logo" className="login-logo"></img>
-            <h2>Log In</h2>
+            <h2>LogIn</h2>
             <form onSubmit={handleSubmit} className="login-form">
 
-            <label htmlFor="username">Username: </label>
+            <label htmlFor="userName">Username: </label>
 
             <br />
 
             <input 
             type="text" 
-            id="username"
+            id="userName"
+            name="userName"
             className="login-userName" 
             placeholder="Enter username..." 
-            value={formState.username} 
+            value={form.userName} 
             onChange={handleChange}
             />
 
@@ -57,10 +62,11 @@ const Login = () => {
             <input 
             type="password" 
             id="password"
+            name="password"
             className="login-password" 
             placeholder="Enter password..." 
             onChange={handleChange} 
-            value={formState.password} 
+            value={form.password} 
             />
 
             <br />
