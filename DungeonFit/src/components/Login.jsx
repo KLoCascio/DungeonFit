@@ -31,31 +31,41 @@ const Login = () => {
 
     return (
         <div className="Login">
-            <img src={loginLogo} alt="Logo"></img>
-            <h1>Log In</h1>
+            <img src={loginLogo} alt="Logo" className="login-logo"></img>
+            <h2>Log In</h2>
             <form onSubmit={handleSubmit} className="login-form">
 
             <label htmlFor="username">Username: </label>
+
+            <br />
+
             <input 
             type="text" 
             id="username"
-            className="signup-userName" 
+            className="login-userName" 
             placeholder="Enter username..." 
             value={formState.username} 
             onChange={handleChange}
             />
 
+            <br />
+
             <label htmlFor="password">Password: </label>
+
+            <br />
+
             <input 
             type="password" 
             id="password"
-            className="signup-password1" 
+            className="login-password" 
             placeholder="Enter password..." 
             onChange={handleChange} 
             value={formState.password} 
             />
 
-            <button type="submit" className="sign-in-button">Log In</button>
+            <br />
+
+            <button type="submit" className="login-button">Log In</button>
             {/* <p>{formState.valid}</p> */}
             </form>
             <div className="Create-Account">
