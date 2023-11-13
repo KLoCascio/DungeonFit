@@ -20,7 +20,7 @@
  Community 
 
 ## Character Creation
-01. Name/Pronouns/
+01. Name/Pronouns
 02. Class
 03. Attributes
 
