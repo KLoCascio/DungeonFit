@@ -20,7 +20,154 @@ body {
   filter: drop-shadow(0 0 2em #fd952daa);
 }
 
-/* Activities.jsx */
+
+/* ======= LOGIN PAGE ======= */
+.login-logo {
+  margin: 3rem 0 3rem 0;
+  padding: 1rem;
+  background-color: #250D2F;
+  border: 7px outset #888;
+  box-shadow: 0 1rem 1.5rem #FF7727;
+  animation: breathe 1.5s infinite alternate;
+}
+
+@keyframes breathe {
+  from {
+    box-shadow: 0 1rem 1.5rem #FF7727;
+  }
+
+  to {
+    box-shadow: 0 1rem 4rem #D8483F;
+  }
+}
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  width: 180px;
+}
+
+
+.login-userName {
+  margin: 0 0 1rem 0;
+  background-color: #fff;
+  color: #000;
+  line-height: 30px;
+  border-radius: 5px;
+  padding-left: 0.5rem;
+  font-size: 1rem;
+}
+
+.login-password {
+  margin: 0 0 1rem 0;
+  background-color: #fff;
+  color: #000;
+  line-height: 30px;
+  border-radius: 5px;
+  padding-left: 0.5rem;
+  font-size: 1rem;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 600;
+  float: left;
+}
+
+.login-button {
+  border-radius: 10px;
+  border: solid 1px #3EB8D6;
+  background-color: #12192C;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 10px 25px;
+  margin: 0 5px;
+}
+
+.create-account-button {
+  border-radius: 10px;
+  border: solid 3px #12192C;
+  background-color: #14374D;
+  box-shadow: 2px 1px 3px #000000a9;
+  padding: 10px 25px;
+  margin: 0 5px;
+}
+
+.create-account-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* ==== ACTIVITY PAGE ==== */
+
+.difficulty-btn-container {
+  display: grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px;
+}
+
+.difficulty-btn {
+  background-color: #FE9F29;
+  color: black;
+  border-radius: 10px;
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 
+    "card1 card2"
+    "card3 card4"
+    "card5 card6";
+}
+
+.details {
+  border-radius: 8px;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  background-color: #250d2f;
+  color: white;
+
+}
+
+.activity-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.custom-input {
+  line-height: 30px;
+  
+}
+
+select {
+  height: 30px;
+}
+
+
+
+.add-activity-btn {
+  grid-area: card1; 
+  justify-self: end; 
+  align-self: start;
+  width: 90%;
+  height: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #652F7B;
+  border-radius: 10px;
+  border: 5px solid #250d2feb;
+  box-shadow: 0 0 5px #fff;
+}
+
 .activity-modal {
   display: grid;
   place-items: center;
@@ -332,70 +479,7 @@ body {
 
 
 
-/* ==== ACTIVITY PAGE ==== */
 
-.difficulty-btn-container {
-  display: grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap: 10px;
-  margin: 10px;
-}
-
-.difficulty-btn {
-  background-color: #FE9F29;
-  color: black;
-  border-radius: 10px;
-}
-
-.activities-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: 
-    "card1 card2"
-    "card3 card4"
-    "card5 card6";
-}
-
-.details {
-  border-radius: 8px;
-  margin: 10px;
-  padding: 15px;
-  text-align: center;
-  background-color: #250d2f;
-  color: white;
-
-}
-
-.activity-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.custom-input {
-  line-height: 30px;
-  
-}
-
-select {
-  height: 30px;
-}
-
-
-
-.add-activity-btn {
-  grid-area: card1; 
-  justify-self: end; 
-  align-self: start;
-  width: 90%;
-  height: 90%;
-  margin: 10px auto;
-  padding: 10px;
-  background-color: #652F7B;
-  border-radius: 10px;
-  border: 5px solid #250d2feb;
-  box-shadow: 0 0 5px #fff;
-}
 
 /* ==== CHARACTER ==== */
 .hero-full-image {
