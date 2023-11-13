@@ -4,35 +4,52 @@ import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 
 const SignUp = () => {
-    const signUp = {
-        username: '',
-        email: '',
+    const initialSignUp = {
+        userName: '',
         password: '',
         passwordConfirm: '',
-        valid: 'Passwords must match'
+        valid: ''
     }
 
     const navigate = useNavigate()
 
-    const [formState, setFormState] = useState(signUp)
+    const [form, setForm] = useState(initialSignUp)
 
-    const handleSubmit = (e) => {
+    console.log(form)
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(formState)
-        setFormState(signUp)
 
-        if (formState.password === formState.passwordConfirm) {
-            setFormState({ ...formState, ['valid']: 'Success!' })
-            navigate("/")
-        } else {
-            setFormState({ ...formState, ['valid']: 'Passwords need to match.' })
+        if (
+            form.userName === "" ||
+            form.password === "" ||
+            form.passwordConfirm === ""
+            ) { 
+            setForm({...form, valid: "Tous les champs sont requis(All fields are required)"})
+            return
+        }
+        if (form.password !== form.passwordConfirm) {
+            setForm({...form, valid: 'les mots de passe ne correspondent pas(Passwords must match)'})
+            return
+        }
+
+        try {
+            const response = await axios.post('http://localhost:3001/register', {
+                userName: form.userName,
+                password: form.password,
+            })
+            console.log(response)
+            setForm(initialSignUp)
+            navigate("/login")
+        } catch (e) {
+            console.error("Error during registration:", e.response)
+            setForm({ ...form, valid: "Registration failed. Please try again." })
         }
     }
-
-    const handleChange = e => {
-        const { id, value } = e.target
-        setFormState({ ...formState, [id]: value })
-    }
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setForm({ ...form, [id]: value, valid: "" });
+      };
 
     return (
         <div className="Signup">
@@ -40,47 +57,35 @@ const SignUp = () => {
             <h1> Create Account</h1>
             <form onSubmit={handleSubmit} className="signup-form">
 
-                <label htmlFor="signup-userName">Username: </label>
-                <input
-                    type="text"
-                    id="username"
-                    className="signup-userName"
-                    placeholder="Enter username..."
-                    value={formState.username}
-                    onChange={handleChange}
+            <label htmlFor="userName">username:</label>
+            <input
+                type="text"
+                id="userName"
+                placeholder="Enter username..."
+                value={form.username}
+                onChange={handleChange}
+            />
+
+            <label htmlFor="password">Password:</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password..."
+                value={form.password}
+                onChange={handleChange}
+            />    
+
+            <label htmlFor="passwordConfirm">Confirm Password:</label>
+            <input
+                type="password"
+                id="passwordConfirm"
+                placeholder="Confirm password..."
+                value={form.passwordConfirm}
+                onChange={handleChange}
                 />
 
-                <label htmlFor="signup-email">Email: </label>
-                <input
-                    type="email"
-                    id="email"
-                    className="signup-email"
-                    placeholder="Enter email..."
-                    onChange={handleChange}
-                    value={formState.email}
-                />
 
-                <label htmlFor="signup-password1">Password: </label>
-                <input
-                    type="password"
-                    id="password"
-                    className="signup-password1"
-                    placeholder="Enter password..."
-                    onChange={handleChange}
-                    value={formState.password}
-                />
-
-                <label htmlFor="signup-password2">Confirm Password: </label>
-                <input
-                    type="password"
-                    id="passwordConfirm"
-                    className="signup-password2"
-                    placeholder="Confirm password..."
-                    onChange={handleChange}
-                    value={formState.passwordConfirm} />
-
-                <button type="submit" className="signup-button">Create Account</button>
-                <p>{formState.valid}</p>
+            <button type="submit" className="signup-button">Create Account</button>
             </form>
         </div>
     )
