@@ -39,9 +39,10 @@ export default function Party() {
       <div className="members">
         <h4>Members:</h4>
         <ul>
-          {users.map((user) => (
-            <li key={user.id}>{user.name}</li>
-          ))}
+          <li>Asger1415 - Ranger</li>
+          <li>GluteGoblin - Druid</li>
+          <li>Ferocious Fiddler - Barbaric Bard</li>
+          <li>SneakySquatter - Rogue</li>
         </ul>
 
         <button className="add-members">
@@ -82,7 +83,7 @@ export default function Party() {
             Selected date: {date.toDateString()}
           </div>
         </div>
-            <button type="submit">Submit Challenge!</button>
+            <button type="submit" className="add-members">Submit Challenge!</button>
       </form>
     </div>
   );

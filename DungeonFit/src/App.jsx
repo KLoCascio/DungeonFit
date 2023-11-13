@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 
+
+
+
 //COMPONENTS
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -14,7 +17,6 @@ function App() {
       <div className="Content">
         <Main />
       </div>
-      
       <div className='footerDiv'>
         <Footer />
       </div>

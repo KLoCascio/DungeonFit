@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
+import Hero from '../assets/Heros/MageHeadshot1.png'
+
 
 // MVP: Display all Achievements
 // Stretch: Evolve into a userAchievements that check prerequisites, and only show achievements that are tied to the user or character.
@@ -26,7 +28,7 @@ export default function Achievements() {
 
     return (
             <div className="Achievements">
-                <img src="#" alt="Hero Portrait" />
+                <img src={Hero} alt="Hero Portrait" />
                 <h2>Achievements</h2>
                 <div className="achievements-grid">
                     {achievements &&
