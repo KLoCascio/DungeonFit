@@ -1,3 +1,7 @@
+* {
+  font-family: 'Fondamento', cursive;
+}
+
 #root {
   max-width: 1280px;
   margin: 0px 0px;
@@ -11,6 +15,10 @@
 
 body {
   height: 100%;
+}
+
+h2 {
+  font-size: 2rem;
 }
 
 .logo:hover {
@@ -119,6 +127,13 @@ label {
   background-color: #250D2F;
   border: 5px outset #888;
   box-shadow: 0 0 1.5rem #FF7727;
+}
+
+
+
+/* ===== CHARACTER SUMMARY ===== */
+.Character-Summary {
+  background-color: #250D2F;
 }
 
 
