@@ -20,13 +20,13 @@ async function getActivityById(req, res) {
 
 async function createActivity(req, res) {
     try {
-        const newActivity = await new Activities(req.body);
-        newActivity.save();
-        return res.status(201).json(newActivity);
+        const newActivity = await new Activities(req.body)
+        newActivity.save()
+        return res.status(201).json(newActivity)
     } catch (e) {
-        console.error('Error creating activity:', e);
-        console.error('Request Body:', req.body);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error creating activity:', e)
+        console.error('Request Body:', req.body)
+        return res.status(500).json({ error: 'Internal Server Error' })
     }
 }
 
