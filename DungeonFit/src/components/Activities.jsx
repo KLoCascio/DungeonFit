@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Activities() {
-  let { cats } = useParams()
+
   const [activities, setActivity] = useState([])
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isActivitySelected, setIsActivitySelected] = useState(true)
