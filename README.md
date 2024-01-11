@@ -1,5 +1,13 @@
 # DungeonFit
 
+![Home Screen](DungeonFit/src/assets/HomeScreen.png)
+
+## Log In and Level Up!
+![Login Screen](DungeonFit/src/assets/LoginScreen.png)
+
+## Track Your Activities
+![Activities Screen](DungeonFit/src/assets/ActivitiesScreen.png)
+
 ## Wire Frame
 ![Wire Frame](DungeonFit/src/assets/DungeonFitWF.png)
 
