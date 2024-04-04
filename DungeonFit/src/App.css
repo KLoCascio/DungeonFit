@@ -611,7 +611,7 @@ select {
   }
   
   .Navbar {
-    /* display: none; */
+    visibility: hidden;
     height: 100px;
   }
 
