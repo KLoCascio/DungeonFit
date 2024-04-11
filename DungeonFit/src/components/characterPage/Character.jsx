@@ -1,7 +1,7 @@
 import Inventory from "./Inventory";
 import Abilities from "./Abilities";
 import Quests from "./Quests";
-import Hero from "../assets/Heros/MageFull1.png";
+import Hero from "../../assets/Heros/MageFull1.png";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
