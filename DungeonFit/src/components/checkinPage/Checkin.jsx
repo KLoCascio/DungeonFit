@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import ActivityForm from "../activityPage/ActivityForm";
 
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconRetina from "leaflet/dist/images/marker-icon-2x.png";
@@ -21,6 +22,7 @@ L.Marker.prototype.options.icon = defaultIcon;
 const Checkin = () => {
   const [location, setLocation] = useState(null);
   const [error, setError] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
@@ -44,6 +46,20 @@ const Checkin = () => {
     }
   };
 
+  const handleCreateActivity = () => {
+    setShowForm(true);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log("Form Submitted");
+    setShowForm(false);
+  };
+
+  const handleCancel = () => {
+    setShowForm(false);
+  };
+
   return (
     <>
       <h2>Check-In to gain Bonus XP!</h2>
@@ -52,19 +68,30 @@ const Checkin = () => {
           Check In
         </button>
         {location && (
-          <div className='checkIn-map'>
-            <MapContainer
-              center={[location.lat, location.lng]}
-              zoom={13}
-              style={{ height: "400px", width: "80%" }}
-              className='checkIn-map'
-            >
-              <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
-              <Marker position={[location.lat, location.lng]}>
-                <Popup>You are here.</Popup>
-              </Marker>
-            </MapContainer>
-          </div>
+          <>
+            <div className='checkIn-map'>
+              <MapContainer
+                center={[location.lat, location.lng]}
+                zoom={13}
+                style={{ height: "300px", width: "65%" }}
+                className='checkIn-map'
+              >
+                <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+                <Marker position={[location.lat, location.lng]}>
+                  <Popup>You are here.</Popup>
+                </Marker>
+              </MapContainer>
+            </div>
+            <button onClick={handleCreateActivity} className='primary-btn'>
+              Create Activity
+            </button>
+            {showForm && (
+              <ActivityForm
+                onSubmit={handleFormSubmit}
+                onCancel={handleCancel}
+              />
+            )}
+          </>
         )}
         {error && <p>Error: {error}</p>}
       </div>
