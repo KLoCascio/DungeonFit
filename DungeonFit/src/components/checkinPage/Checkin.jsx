@@ -21,14 +21,8 @@ L.Marker.prototype.options.icon = defaultIcon;
 const Checkin = () => {
   const [location, setLocation] = useState(null);
   const [error, setError] = useState("");
-  const [showModal, setShowModal] = useState(false);
-
-  const handleCheckInClick = () => {
-    setShowModal(true);
-  };
 
   const getUserLocation = () => {
-    setShowModal(false);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -52,24 +46,11 @@ const Checkin = () => {
 
   return (
     <>
-      <h2>Check-In to let your friends know where you are!</h2>
+      <h2>Check-In to gain Bonus XP!</h2>
       <div>
-        <button onClick={handleCheckInClick} className='checkIn-btn'>
+        <button onClick={getUserLocation} className='checkIn-btn'>
           Check In
         </button>
-        {showModal && (
-          <div className='checkIn-modal'>
-            <div className='checkIn-modal-content'>
-              <p className='modal-text'>
-                We need access to your location to check you in. Please press
-                "Allow" on the next prompt.
-              </p>
-              <button onClick={getUserLocation} className='checkIn-btn'>
-                Okay, got it
-              </button>
-            </div>
-          </div>
-        )}
         {location && (
           <div className='checkIn-map'>
             <MapContainer
