@@ -286,6 +286,10 @@ select {
 }
 
 .checkIn-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: #652F7B;
   padding: 20px;
   border-radius: 10px;
@@ -293,6 +297,28 @@ select {
   width: 90%;
   z-index: 1001;
   box-sizing: border-box;
+}
+
+.activity-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+label {
+  width: 90%; 
+  text-align: left; 
+  margin-left: 5%; 
+  color: #eee;
+}
+
+.checkIn-modal-input {
+  width: 90%;
+  margin: 2px 0 15px 0;
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc
 }
 
 .checkIn-modal-close {
@@ -307,10 +333,31 @@ select {
 }
 
 .checkIn-btn {
-  background-color: #652F7B;
-  border: 3px solid #250D2F;
+  color: #222;
+  background-color: #FE9F29;
+  border: 3px solid #fff;
   border-radius: 10px;
-  margin: 30px 0;
+  width: 50%;
+  margin: 20px 0;
+  font-size: 1.3rem;
+}
+
+.checkIn-btn-modal {
+  color: #222;
+  background-color: #FE9F29;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  width: 90%;
+  margin: 10px 0;
+  font-size: 1.3rem;
+}
+
+.checkIn-btn-back {
+  background-color: #00000025;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  width: 90%;
+  margin: 10px 0;
   font-size: 1.3rem;
 }
 
