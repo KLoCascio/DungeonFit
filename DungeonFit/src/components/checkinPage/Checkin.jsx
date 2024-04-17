@@ -82,14 +82,24 @@ const Checkin = () => {
                 </Marker>
               </MapContainer>
             </div>
-            <button onClick={handleCreateActivity} className='primary-btn'>
+            <button onClick={handleCreateActivity} className='checkIn-btn'>
               Create Activity
             </button>
             {showForm && (
-              <ActivityForm
-                onSubmit={handleFormSubmit}
-                onCancel={handleCancel}
-              />
+              <div className='checkIn-modal-overlay'>
+                <div className='checkIn-modal-content'>
+                  <button
+                    onClick={handleCancel}
+                    className='checkIn-modal-close'
+                  >
+                    &times;
+                  </button>
+                  <ActivityForm
+                    onSubmit={handleFormSubmit}
+                    onCancel={handleCancel}
+                  />
+                </div>
+              </div>
             )}
           </>
         )}
