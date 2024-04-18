@@ -73,7 +73,7 @@ const Checkin = () => {
               <MapContainer
                 center={[location.lat, location.lng]}
                 zoom={13}
-                style={{ height: "300px", width: "65%" }}
+                style={{ height: "300px", width: "50%" }}
                 className='checkIn-map'
               >
                 <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
