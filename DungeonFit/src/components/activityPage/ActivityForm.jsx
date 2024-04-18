@@ -1,40 +1,40 @@
 import React, { useState } from "react";
 
 const ActivityForm = ({ onSubmit, onCancel }) => {
-  const [activityType, setActivityType] = useState("");
-  const [bodyPart, setBodyPart] = useState("");
-  const [timeFrame, setTimeFrame] = useState("");
-  const [distance, setDistance] = useState("");
-  const [sets, setSets] = useState("");
-  const [reps, setReps] = useState("");
+  const [formData, setFormData] = useState({
+    activityName: "",
+    activityType: "",
+    bodyPart: "",
+    timeFrame: "",
+    distance: "",
+    sets: "",
+    reps: "",
+  });
 
-  const handleActivityTypeChange = (event) => {
-    setActivityType(event.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
-  const handleBodyPartChange = (event) => {
-    setBodyPart(event.target.value);
-  };
-  const handleTimeFrameChange = (event) => {
-    setTimeFrame(event.target.value);
-  };
-  const handleDistanceChange = (event) => {
-    setDistance(event.target.value);
-  };
-  const handleSetsChange = (event) => {
-    setSets(event.target.value);
-  };
-  const handleRepsChange = (event) => {
-    setReps(event.target.value);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(formData);
+    console.log("Form Submitted with:", formData);
   };
 
   return (
-    <form className='activity-form' onSubmit={onSubmit}>
+    <form className='activity-form' onSubmit={handleSubmit}>
       <label htmlFor='activityName'>Name of Activity:</label>
       <input
         type='text'
         id='activityName'
         name='activityName'
         className='checkIn-modal-input'
+        value={formData.activityName}
+        onChange={handleChange}
       />
 
       <label htmlFor='activityType'>Type of Activity:</label>
@@ -42,8 +42,8 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
         id='activityType'
         name='activityType'
         className='checkIn-modal-input'
-        value={activityType}
-        onChange={handleActivityTypeChange}
+        value={formData.activityType}
+        onChange={handleChange}
       >
         <option value=''>Select a Type</option>
         <option value='Cardio'>Cardio</option>
@@ -57,8 +57,8 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
         id='bodyPart'
         name='bodyPart'
         className='checkIn-modal-input'
-        value={bodyPart}
-        onChange={handleBodyPartChange}
+        value={formData.bodyPart}
+        onChange={handleChange}
       >
         <option value=''>Select a part of the body</option>
         <option value='Upper'>Upper Body</option>
@@ -71,8 +71,8 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
         id='timeFrame'
         name='timeFrame'
         className='checkIn-modal-input'
-        value={timeFrame}
-        onChange={handleTimeFrameChange}
+        value={formData.timeFrame}
+        onChange={handleChange}
       >
         <option value=''>Select a Timeframe</option>
         <option value='1 hour'>1 hour</option>
@@ -87,8 +87,8 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
         id='distance'
         name='distance'
         className='checkIn-modal-input'
-        value={distance}
-        onChange={handleDistanceChange}
+        value={formData.distance}
+        onChange={handleChange}
       >
         <option value=''>Select a Distance</option>
         <option value='Quarter'>1/4 mile</option>
@@ -106,8 +106,8 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
         id='sets'
         name='sets'
         className='checkIn-modal-input'
-        value={sets}
-        onChange={handleSetsChange}
+        value={formData.sets}
+        onChange={handleChange}
       >
         <option value=''>Select # of Sets</option>
         <option value='1'>1</option>
@@ -122,8 +122,8 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
         id='reps'
         name='reps'
         className='checkIn-modal-input'
-        value={reps}
-        onChange={handleRepsChange}
+        value={formData.reps}
+        onChange={handleChange}
       >
         <option value=''>Select # of Reps</option>
         <option value='5'>5 Reps</option>
