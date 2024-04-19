@@ -21,8 +21,8 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(formData);
     console.log("Form Submitted with:", formData);
+    onSubmit(formData);
   };
 
   return (
