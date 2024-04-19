@@ -1,67 +1,39 @@
-const db = require('../db')
-const { Activities } = require('../models')
+const mongoose = require("mongoose");
+const db = require("../db");
+const Activities = require("../models/activities");
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-const main = async () => {
-  const activitiesData = [
-    {
-      activityDay: "Sunday",
-      activityIcon: "./src/assets/icons/CardioIcon.png",
-      activityTitle: "Jogging",
-      activityType: "Cardio"
-    },
-    {
-      activityDay: "Monday",
-      activityIcon: "./src/assets/icons/LiftIcon.png",
-      activityTitle: "Chest Push",
-      activityType: "Upper Body"
-    },
-    {
-      activityDay: "Tuesday",
-      activityIcon: "./src/assets/icons/RestIcon.png",
-      activityTitle: "Rest",
-      activityType: "Rest Day"
-    },
-    {
-      activityDay: "Wednesday",
-      activityIcon: "./src/assets/icons/LiftIcon.png",
-      activityTitle: "Lats and Triceps",
-      activityType: "Upper Body"
-    },
-    {
-      activityDay: "Thursday",
-      activityIcon: "./src/assets/icons/LiftIcon.png",
-      activityTitle: "Back Pull",
-      activityType: "Upper Body"
-    },
-    {
-      activityDay: "Friday",
-      activityIcon: "./src/assets/icons/LiftIcon.png",
-      activityTitle: "Leg Push",
-      activityType: "Lower Body"
-    },
-    {
-      activityDay: "Saturday",
-      activityIcon: "./src/assets/icons/LiftIcon.png",
-      activityTitle: "Chest and Biceps",
-      activityType: "Upper Body"
-    },
-    {
-      activityDay: "Sunday",
-      activityIcon: "./src/assets/icons/RestIcon.png",
-      activityTitle: "Rest",
-      activityType: "Rest Day"
-    },
-  ]
+const seedActivities = [
+  {
+    activityName: "Jogging",
+    activityType: "Cardio",
+    bodyPart: "Lower",
+    timeFrame: 1,
+    distance: 5,
+    sets: 1,
+    reps: 1,
+  },
+  {
+    activityName: "Push Ups",
+    activityType: "Strength",
+    bodyPart: "Upper",
+    timeFrame: 1,
+    distance: 0,
+    sets: 3,
+    reps: 20,
+  },
+];
 
-  await Activities.insertMany(activitiesData)
-  console.log('Created Activities')
-}
+const seedDB = async () => {
+  await db;
+  await Activities.deleteMany({});
+  await Activities.insertMany(seedActivities);
+  console.log("Database seeded!");
+  mongoose.connection.close();
+};
 
-const run = async () => {
-  await main()
-  db.close()
-}
-
-run()
+seedDB().catch((err) => {
+  console.error("Failed to seed database:", err);
+  mongoose.connection.close();
+});

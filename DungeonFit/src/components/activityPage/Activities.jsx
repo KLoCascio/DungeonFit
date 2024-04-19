@@ -6,7 +6,7 @@ import ActivityForm from "./ActivityForm";
 export default function Activities() {
   const [activities, setActivities] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedTab, setSelectedTab] = useState("activity");
+  // const [selectedTab, setSelectedTab] = useState("activity");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -27,22 +27,22 @@ export default function Activities() {
     setModalVisible(!modalVisible);
   };
 
-  const handleTabChange = (tab) => {
-    setSelectedTab(tab);
-  };
+  // const handleTabChange = (tab) => {
+  //   setSelectedTab(tab);
+  // };
 
   const handleAddActivity = async (newActivityData) => {
+    console.log("Submitting:", newActivityData);
     try {
-      // Post the new activity to the backend
       const response = await axios.post(
         "http://localhost:3001/activities",
         newActivityData
       );
-      // Optimistically update the UI if the post is successful
       setActivities((prevActivities) => [response.data, ...prevActivities]);
-      setModalVisible(false); // Close the modal
+      handleModalToggle();
     } catch (error) {
       console.error("Error adding activity:", error);
+      setError("Failed to add activity.");
     }
   };
 

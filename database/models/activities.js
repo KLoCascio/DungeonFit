@@ -1,13 +1,16 @@
-const { Schema } = require('mongoose')
+const { Schema } = require("mongoose");
 
 const activitySchema = new Schema(
-    {
-        activityDay: { type: String, required: true },
-        activityIcon: { type: String, required: true },
-        activityTitle: { type: String, required: true },
-        activityType: { type: String, required: true }
-    },
-    { timestamps: true }
-)
+  {
+    activityName: { type: String, required: true },
+    activityType: { type: String, required: true },
+    bodyPart: { type: String, required: false },
+    timeFrame: { type: String, required: false },
+    distance: { type: String, required: false },
+    sets: { type: Number, required: false },
+    reps: { type: Number, required: false },
+  },
+  { timestamps: true }
+);
 
-module.exports = activitySchema
+module.exports = activitySchema;
