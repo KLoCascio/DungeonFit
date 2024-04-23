@@ -158,11 +158,26 @@ label {
 
 .activities-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: 
-    "card1 card2"
-    "card3 card4"
-    "card5 card6";
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.activity-card {
+  background-color: #250D2F;
+  color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.activity-icon {
+  width: 75px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .details {
@@ -806,10 +821,6 @@ label {
   border-radius: 10px;
   margin-bottom: 10px;
   width: 100
-}
-
-.activity-icon {
-  margin-top: 10px;
 }
 
 .activity-details img {
