@@ -9,7 +9,7 @@ import Party from "./groupPage/Party";
 import Activities from "./activityPage/Activities";
 import Checkin from "./checkinPage/Checkin";
 import Invite from "./groupPage/Invite";
-import ActivityDetails from "../details/ActivityDetails";
+import ActivityDetails from "../components/activityPage/ActivityDetails";
 
 const Main = (props) => {
   return (
