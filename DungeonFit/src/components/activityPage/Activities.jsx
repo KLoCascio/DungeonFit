@@ -2,11 +2,27 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ActivityForm from "./ActivityForm";
+import {
+  GiRunningNinja,
+  GiCycling,
+  GiWeightLiftingUp,
+  GiEnergise,
+  GiEmbrassedEnergy,
+} from "react-icons/gi";
+import { IoFitnessOutline } from "react-icons/io5";
+
+const icons = {
+  Running: GiRunningNinja,
+  Biking: GiCycling,
+  Strength: GiWeightLiftingUp,
+  Calisthenics: IoFitnessOutline,
+  Yoga: GiEmbrassedEnergy,
+  Rest: GiEnergise,
+};
 
 export default function Activities() {
   const [activities, setActivities] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  // const [selectedTab, setSelectedTab] = useState("activity");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -27,10 +43,6 @@ export default function Activities() {
     setModalVisible(!modalVisible);
   };
 
-  // const handleTabChange = (tab) => {
-  //   setSelectedTab(tab);
-  // };
-
   const handleAddActivity = async (newActivityData) => {
     console.log("Submitting:", newActivityData);
     try {
@@ -49,6 +61,7 @@ export default function Activities() {
   return (
     <div className='Activities'>
       <button onClick={handleModalToggle} className='add-activity-btn'>
+        {/* THIS BUTTON NEEDS TO BE ADJUSTED */}
         <img src='./src/assets/icons/PlusIcon.png' alt='Plus Symbol' />
         Add Activity
       </button>
@@ -66,14 +79,14 @@ export default function Activities() {
             key={activity._id}
             className='activity-card'
           >
-            <img
-              className='activity-icon'
-              src={activity.activityIcon}
-              alt='Activity Icon'
-            />
+            {icons[activity.activityIcon] ? (
+              React.createElement(icons[activity.activityIcon], { size: 40 })
+            ) : (
+              <span>No Icon</span>
+            )}
             <div>
-              <h2>{activity.activityTitle}</h2>
-              <h3>{activity.activityDay}</h3>
+              <h2>{activity.activityName}</h2>
+              <h3>{activity.activityType}</h3>
             </div>
           </Link>
         ))}

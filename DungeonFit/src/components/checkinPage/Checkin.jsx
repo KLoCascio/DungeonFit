@@ -86,12 +86,9 @@ const Checkin = () => {
               Create Activity
             </button>
             {showForm && (
-              <div className='checkIn-modal-overlay'>
-                <div className='checkIn-modal-content'>
-                  <button
-                    onClick={handleCancel}
-                    className='checkIn-modal-close'
-                  >
+              <div className='modal-overlay'>
+                <div className='modal-content'>
+                  <button onClick={handleCancel} className='modal-close'>
                     &times;
                   </button>
                   <ActivityForm
