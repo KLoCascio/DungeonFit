@@ -48,10 +48,7 @@ export default function Activities() {
 
   return (
     <div className='Activities'>
-      <button
-        onClick={() => setModalVisible(true)}
-        className='add-activity-btn'
-      >
+      <button onClick={handleModalToggle} className='add-activity-btn'>
         <img src='./src/assets/icons/PlusIcon.png' alt='Plus Symbol' />
         Add Activity
       </button>
@@ -59,7 +56,7 @@ export default function Activities() {
       {modalVisible && (
         <ActivityForm
           onSubmit={handleAddActivity}
-          onCancel={() => setModalVisible(false)}
+          onCancel={handleModalToggle}
         />
       )}
       <div className='activities-grid'>
