@@ -2,7 +2,6 @@ const { Schema } = require("mongoose");
 
 const activitySchema = new Schema(
   {
-    activityIcon: { type: String, required: true },
     activityName: { type: String, required: true },
     activityType: { type: String, required: true },
     bodyPart: { type: String, required: false },
