@@ -9,7 +9,7 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
     distance: "",
     sets: "",
     reps: "",
-    activityIcon: "",
+    // activityIcon: "",
   });
 
   const handleChange = (event) => {

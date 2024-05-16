@@ -17,7 +17,7 @@ const icons = {
   Strength: GiWeightLiftingUp,
   Calisthenics: IoFitnessOutline,
   Yoga: GiEmbrassedEnergy,
-  Rest: GiEnergise,
+  Resting: GiEnergise,
 };
 
 export default function Activities() {
@@ -79,8 +79,8 @@ export default function Activities() {
             key={activity._id}
             className='activity-card'
           >
-            {icons[activity.activityIcon] ? (
-              React.createElement(icons[activity.activityIcon], { size: 40 })
+            {icons[activity.activityType] ? (
+              React.createElement(icons[activity.activityType], { size: 40 })
             ) : (
               <span>No Icon</span>
             )}
