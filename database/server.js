@@ -1,21 +1,21 @@
 const express = require("express");
-const db = require("./db");
 const logger = require("morgan");
-const app = express();
 const cors = require("cors");
-// const methodOverride = require("method-override");
-
+const app = express();
 const PORT = process.env.PORT || 3001;
 
+require("./db");
+
+// Controllers
 const achievementsController = require("./controllers/achievementsController");
 const activitiesController = require("./controllers/activitiesController");
 const usersController = require("./controllers/usersController");
 
-// app.use(methodOverride("_method"));
+// Middleware
 app.use(
   cors({
     origin: "http://localhost:5173",
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
   })
 );
@@ -23,13 +23,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res
-    .status(500)
-    .json({ error: "Internal Server Error", message: err.message });
-});
-
+// Routes
 app.get("/user", usersController.getAllUsers);
 app.post("/user", usersController.createUser);
 app.delete("/user/:id", usersController.deleteUser);
@@ -49,4 +43,18 @@ app.post("/activities", activitiesController.createActivity);
 app.delete("/activities/:id", activitiesController.deleteActivity);
 app.put("/activities/:id", activitiesController.updateActivity);
 
+// 404 Handler
+app.use((req, res, next) => {
+  res.status(404).json({ error: "Not Found", message: "Route not found" });
+});
+
+// Global error Handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res
+    .status(500)
+    .json({ error: "Internal Server Error", message: err.message });
+});
+
+// Start server
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));

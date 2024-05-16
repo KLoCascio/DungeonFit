@@ -31,6 +31,21 @@ h2 {
   filter: drop-shadow(0 0 2em #fd952daa);
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  border: 5px solid #12192C; 
+  border-top: 5px solid #FE9F29; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.3s linear infinite;
+  margin: 50px auto;
+}
+
 
 /* ======= LOGIN PAGE ======= */
 .login-logo {

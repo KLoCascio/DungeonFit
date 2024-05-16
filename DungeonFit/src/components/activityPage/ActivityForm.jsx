@@ -1,23 +1,6 @@
 import React, { useState } from "react";
-import {
-  GiRunningNinja,
-  GiCycling,
-  GiWeightLiftingUp,
-  GiEnergise,
-  GiEmbrassedEnergy,
-} from "react-icons/gi";
-import { IoFitnessOutline } from "react-icons/io5";
 
 const ActivityForm = ({ onSubmit, onCancel }) => {
-  const iconOptions = [
-    { label: "Running", IconComponent: GiRunningNinja },
-    { label: "Biking", IconComponent: GiCycling },
-    { label: "Strength", IconComponent: GiWeightLiftingUp },
-    { label: "Calisthenics", IconComponent: IoFitnessOutline },
-    { label: "Yoga", IconComponent: GiEmbrassedEnergy },
-    { label: "Rest", IconComponent: GiEnergise },
-  ];
-
   const [formData, setFormData] = useState({
     activityName: "",
     activityType: "",
@@ -29,23 +12,16 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
     activityIcon: "",
   });
 
-  const handleChange = (iconLabel) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
       ...prevState,
-      activityIcon: iconLabel,
+      [name]: value,
     }));
   };
 
-  // const handleIconSelect = (iconName) => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     activityIcon: iconName,
-  //   }));
-  // };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
     console.log("Form Submitted with:", formData);
     onSubmit(formData);
   };
@@ -53,7 +29,7 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
   return (
     <div className='modal-overlay'>
       <div className='modal-content'>
-        <form className='activity-form' onSubmit={handleSubmit}>
+        <form className='activity-form' onSubmit={handleFormSubmit}>
           <label htmlFor='activityName'>Name of Activity:</label>
           <input
             type='text'
@@ -63,24 +39,6 @@ const ActivityForm = ({ onSubmit, onCancel }) => {
             value={formData.activityName}
             onChange={handleChange}
           />
-
-          <div className='icon-selection'>
-            {iconOptions.map((option) => (
-              <button
-                key={option.label}
-                onClick={() => handleIconSelect(option.label)}
-                type='button'
-                className={
-                  formData.activityIcon === option.label
-                    ? "icon-button selected"
-                    : "icon-button"
-                }
-              >
-                <option.IconComponent size={30} />
-                <span>{option.label}</span>
-              </button>
-            ))}
-          </div>
 
           <label htmlFor='activityType'>Type of Activity:</label>
           <select

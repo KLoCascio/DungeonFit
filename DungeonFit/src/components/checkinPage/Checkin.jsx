@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import axios from "axios";
 import ActivityForm from "../activityPage/ActivityForm";
 
 import icon from "leaflet/dist/images/marker-icon.png";
@@ -23,9 +24,12 @@ const Checkin = () => {
   const [location, setLocation] = useState(null);
   const [error, setError] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const getUserLocation = () => {
     if (navigator.geolocation) {
+      setLoading(true);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setLocation({
@@ -33,16 +37,19 @@ const Checkin = () => {
             lng: position.coords.longitude,
           });
           setError("");
+          setLoading(false);
         },
         (err) => {
           setError(
             "Failed to retrieve your location. Please ensure location services are enabled and try again."
           );
           console.error(err);
+          setLoading(false);
         }
       );
     } else {
       setError("Geolocation is not supported by your browser.");
+      setLoading(false);
     }
   };
 
@@ -50,10 +57,19 @@ const Checkin = () => {
     setShowForm(true);
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    console.log("Form Submitted");
-    setShowForm(false);
+  const handleFormSubmit = async (formData) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/activities",
+        formData
+      );
+      console.log("Server response:", response.data);
+      setShowForm(false);
+      setLocation(null);
+    } catch (err) {
+      console.error("Failed to submit activity:", err);
+      setSubmissionError("Failed to submit activity. Please try again");
+    }
   };
 
   const handleCancel = () => {
@@ -67,6 +83,7 @@ const Checkin = () => {
         <button onClick={getUserLocation} className='checkIn-btn'>
           Check In
         </button>
+        {loading && <div className='loading-spinner'></div>}
         {location && (
           <>
             <div className='checkIn-map'>
@@ -75,6 +92,7 @@ const Checkin = () => {
                 zoom={13}
                 style={{ height: "300px", width: "50%" }}
                 className='checkIn-map'
+                whenReady={() => setLoading(false)}
               >
                 <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
                 <Marker position={[location.lat, location.lng]}>
@@ -101,6 +119,7 @@ const Checkin = () => {
           </>
         )}
         {error && <p>Error: {error}</p>}
+        {submissionError && <p className='error-message'>{submissionError}</p>}
       </div>
     </>
   );
